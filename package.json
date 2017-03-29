@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/1dv430/fm222gn-project#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.2",
+    "mongoose": "^4.9.2",
     "path": "^0.12.7"
   }
 }
