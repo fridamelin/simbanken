@@ -1,0 +1,25 @@
+{
+  "name": "fm222gn-project",
+  "version": "1.0.0",
+  "description": "Mjukvaruutvecklingsprojekt",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1dv430/fm222gn-project.git"
+  },
+  "author": "Frida Melin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1dv430/fm222gn-project/issues"
+  },
+  "homepage": "https://github.com/1dv430/fm222gn-project#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.2",
+    "path": "^0.12.7"
+  }
+}
