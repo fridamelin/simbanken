@@ -7,16 +7,18 @@
         <link rel="stylesheet" href="/stylesheets/style.css">
     </head>
 <body>
+{{#if user}}
+    <p>Welcome {{user.username}} ,you are logged in!</p>
+    <form action="/logout" method="post">
+        <input type="submit" value="Log out" id="LogoutBtn">
+    </form>
+
+{{/if}}
 <div id="upper"> <img src="../simklubb.png">
 </div>
 <div id="wrapper">
-
     {{{body}}}
 </div>
 
 </body>
-
-
-
-
 </html>
