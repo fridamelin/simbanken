@@ -1,0 +1,25 @@
+#upper{
+    height: 100px;
+}
+#wrapper{
+    background-color: #2f70ff;
+    margin: auto;
+    width: 1000px;
+    height: 500px;
+}
+#start{
+    margin: auto;
+    background-color: #2f70ff;
+    width: 500px;
+    height: 350px
+}
+#LoginBtn{
+    width: 80px;
+    margin-left: calc(50% - 40px);
+    margin-top: 100px;
+}
+#SignupBtn{
+    width:100px;
+    margin-left: calc(50% - 50px);
+    margin-top: 20px;
+}
