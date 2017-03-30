@@ -1,3 +1,8 @@
+body{
+    background-image: url("../water-1018808.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 #upper{
     height: 100px;
 }
