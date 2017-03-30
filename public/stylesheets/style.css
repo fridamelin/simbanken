@@ -6,15 +6,23 @@ body{
 #upper{
     height: 100px;
 }
+h1{
+   text-align: center;
+}
 #wrapper{
-    background-color: #2f70ff;
+    background-color: #1991d0;
     margin: auto;
     width: 1000px;
     height: 500px;
 }
+#wrapper img {
+    float: right;
+    box-shadow: 1px 2px #020202;
+
+}
 #start{
     margin: auto;
-    background-color: #2f70ff;
+    background-color: #1991d0;
     width: 500px;
     height: 350px
 }
