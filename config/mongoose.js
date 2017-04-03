@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports = function () {
+
     let mongoose = require('mongoose');
+    mongoose.Promise = require('bluebird');
     const connectLink = 'mongodb://frida:frida@ds145370.mlab.com:45370/fridasdatabas';
 
     let db = mongoose.connect(connectLink);

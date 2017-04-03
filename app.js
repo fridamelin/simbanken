@@ -21,6 +21,19 @@ app.engine('.hbs', exhbs({
 }));
 app.set('view engine', '.hbs');
 
+//session, took from a lecture
+app.use(session({
+    name:   "theserversession",  // Don't use default session cookie name.
+    secret: "K7smsx9MsEasad89wEzVp5EeCep5s", // should be kept secret
+    saveUninitialized: false, // save/not-save a created but not modified session
+    resave: false, // resave even if a request is not changing the session
+    cookie: {
+        httpOnly: true, // dont allow client script messing with the cookie
+        maxAge: 1000 * 60 * 60 * 24 // Millisecond
+    }
+}));
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/home'));

@@ -1,5 +1,6 @@
 let router = require('express').Router();
 let User = require('../models/User');
+let bcrypt = require('bcrypt-nodejs');
 
 
 router.route('/')
@@ -42,7 +43,7 @@ router.route('/createMembership')
     }
 });
     });
-//gGet the loginpage
+//Get the loginpage
 router.route('/login')
     .get(function (req, res) {
         User.find({}, function (error, data) {
@@ -55,6 +56,36 @@ router.route('/login')
                 })
             };
             res.render('home/login', context);
-        })
+        });
+    })
+    .post(function (req, res) {
+        console.log(req.body);
+        let query = User.find({username: req.body.username});
+        query.exec().then(function (data) {
+            console.log(data);
+            if(data.length > 0) {
+                bcrypt.compare(req.body.password, data[0].password, function (error, result) {
+                    if(error){
+                        console.log(error);
+                    }
+                     if (result) {
+                        req.session.user = data[0];
+                        res.locals.user = req.session.user;
+                        res.redirect('/');
+                    }
+                });
+            }
+            else {
+                req.session.flash = {
+                    type: 'fail',
+                    message: 'Wrong username or password, please try again!'
+                };
+                res.redirect('/login');
+            }
+        }).catch(function (err) {
+            // Show the error
+            console.log("error: " + err);
+            res.redirect('/login');
+        });
     });
 module.exports = router;
