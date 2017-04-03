@@ -43,6 +43,11 @@ router.route('/createMembership')
     }
 });
     });
+
+router.route('/strokes')
+    .get(function (req, res) {
+        res.render('home/strokes');
+    });
 //Get the loginpage
 router.route('/login')
     .get(function (req, res) {
@@ -71,7 +76,7 @@ router.route('/login')
                      if (result) {
                         req.session.user = data[0];
                         res.locals.user = req.session.user;
-                        res.redirect('/');
+                        res.redirect('/strokes');
                     }
                 });
             }

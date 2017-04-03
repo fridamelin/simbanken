@@ -99,3 +99,15 @@ footer{
 footer p{
     text-align: center;
 }
+#maps{
+    background-color: #1991d0;
+    margin: 100px auto;
+    width: 700px;
+    height: 100px;
+    text-align:center;
+}
+.foldericon{
+    height: 120px;
+    width: 120px;
+    margin-left: 10px;
+}
