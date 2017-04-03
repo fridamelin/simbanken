@@ -42,4 +42,19 @@ router.route('/createMembership')
     }
 });
     });
+//gGet the loginpage
+router.route('/login')
+    .get(function (req, res) {
+        User.find({}, function (error, data) {
+            let context = {
+                users: data.map(function (data) {
+                    return {
+                        username: data.username,
+                        password: data.password
+                    };
+                })
+            };
+            res.render('home/login', context);
+        })
+    });
 module.exports = router;

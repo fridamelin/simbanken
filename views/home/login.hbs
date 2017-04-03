@@ -1,16 +1,15 @@
-<h1>Log In</h1>
+<h1>Logga in</h1>
 
 <form action="/" class="startP">
     <a href="/">Startsida</a>
 </form>
 
-
-<form action="/login" method="post" class="form">
-    Username: <input type="text" name="username" id="usernameBox"><br>
-    Password: <input type="password" name="password" id="passwordBox"><br>
+<div id="login">
+<form action="/login" method="post" class="formLogin">
+    <p>E-post:</p>
+    <input type="text" name="username" id="usernameBox"><br>
+    <p>Lösenord:</p>
+   <input type="password" name="password" id="passwordBox"><br>
     <input type="submit" value="Submit" id="SubmitBtn">
-
 </form>
-<form action="/createMembership" id="FormCreateMember">
-    Do you want to be a member? <input type="submit" value="Sign up!" id="BeaMemberBtn">
-</form>
+</div>
