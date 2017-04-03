@@ -16,6 +16,9 @@ h1{
     height: 500px;
     border: solid 2px #85bffc;
 }
+.startP{
+    float: right;
+}
 #start{
     margin: auto;
     background-color: #1991d0;
@@ -110,4 +113,5 @@ footer p{
     height: 120px;
     width: 120px;
     margin-left: 10px;
+    position: relative;
 }

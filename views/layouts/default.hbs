@@ -7,16 +7,24 @@
         <link rel="stylesheet" href="/stylesheets/style.css">
     </head>
 <body>
-{{#if user}}
-    <p>Welcome {{user.username}} ,you are logged in!</p>
-    <form action="/logout" method="post">
-        <input type="submit" value="Log out" id="LogoutBtn">
-    </form>
 
-{{/if}}
 <div id="upper"> <img src="../simklubb.png">
 </div>
 <div id="wrapper">
+    {{#if user}}
+        <form action="/" class="startP">
+            <a href="/">Tillbaka till startsidan</a>
+        </form>
+    {{/if}}
+    {{#if user}}
+        <div id="welcomeuser">
+            <p>Inloggad som: {{user.username}}</p>
+            <form action="/logout" method="post">
+                <input type="submit" value="Logga ut" id="LogoutBtn">
+            </form>
+        </div>
+    {{/if}}
+
     {{{body}}}
 
 </div>
