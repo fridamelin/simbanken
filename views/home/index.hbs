@@ -1,11 +1,17 @@
-<h1>Welcome</h1>
+<h1>Välkommen!</h1>
 
 <div id="start">
+    {{#if user}}
+        <form action="/strokes">
+            <input type="submit" value="Träningspass" id="Btn">
+        </form>
+    {{else}}
 <form action="/login">
-    <input type="submit" value="Log In" id="LoginBtn" />
+    <input type="submit" value="Logga in" id="LoginBtn" />
 </form>
 
 <form action="/createMembership">
-    <input type="submit" value="Sign Up" id="SignupBtn">
+    <input type="submit" value="Registrera" id="SignupBtn">
 </form>
+    {{/if}}
 </div>

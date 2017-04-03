@@ -10,7 +10,8 @@ h1{
    text-align: center;
 }
 #welcomeuser p{
-    font-family: "Arial Narrow";
+    margin-left: 5px;
+    font-weight: bold;
 }
 #wrapper{
     background-color: #1991d0;
@@ -28,8 +29,8 @@ h1{
 #LoginBtn{
     width: 120px;
     height: 50px;
-    margin-left: calc(50% - 50px);
-    margin-top: 20px;
+    margin-left: calc(50% - 60px);
+    margin-top: 50px;
     font-size: large;
     cursor: pointer;
 }
@@ -43,8 +44,16 @@ h1{
 #SignupBtn{
     width:170px;
     height: 50px;
-    margin-left: calc(50% - 75px);
+    margin-left: calc(50% - 85px);
     margin-top: 20px;
+    font-size: large;
+    cursor: pointer;
+}
+#Btn{
+    width: 140px;
+    height: 50px;
+    margin-left: calc(50% - 70px);
+    margin-top: 50px;
     font-size: large;
     cursor: pointer;
 }
@@ -123,4 +132,7 @@ footer p{
     height: 50px;
     width: 50px;
     float: right;
+}
+.startP{
+    text-align: center;
 }

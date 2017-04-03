@@ -93,4 +93,14 @@ router.route('/login')
             res.redirect('/login');
         });
     });
+//Get the logout page
+router.route('/logout')
+    .get(function (req, res) {
+        res.locals.user = undefined;
+        res.render('home/logout');
+        req.session.destroy();
+    })
+    .post(function (req, res) {
+        res.redirect('/logout');
+    });
 module.exports = router;
