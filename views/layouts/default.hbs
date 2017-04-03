@@ -7,15 +7,15 @@
         <link rel="stylesheet" href="/stylesheets/style.css">
     </head>
 <body>
-
 <div id="upper"> <img src="../simklubb.png">
 </div>
 <div id="wrapper">
-    {{#if user}}
-        <form action="/" class="startP">
-            <a href="/">Tillbaka till startsidan</a>
-        </form>
-    {{/if}}
+{{#if user}}
+    <a href="/">
+        <img src="homeicon.png" alt="homeicon" class="homeicon">
+    </a>
+
+{{/if}}
     {{#if user}}
         <div id="welcomeuser">
             <p>Inloggad som: {{user.username}}</p>
