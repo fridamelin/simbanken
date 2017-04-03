@@ -55,9 +55,16 @@ h1{
 #createUser{
     height: 20px;
 }
+#createUser:focus{
+    background-color: #85bffc;
+}
 #createPassword{
     height: 20px;
 }
+#createPassword:focus{
+    background-color: #85bffc;
+}
 #CreateBtn{
     margin-top: 15px;
+    cursor: pointer;
 }
