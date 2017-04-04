@@ -93,6 +93,10 @@ router.route('/login')
             res.redirect('/login');
         });
     });
+router.route('/create')
+    .get(function (req, res) {
+        res.render('home/create');
+    });
 //Get the logout page
 router.route('/logout')
     .get(function (req, res) {

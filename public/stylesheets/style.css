@@ -136,3 +136,41 @@ footer p{
 .startP{
     text-align: center;
 }
+#createNew{
+    width:150px;
+    height: 40px;
+    margin: 10px auto;
+    font-size: large;
+    cursor: pointer;
+}
+#createNew:hover{
+    background-color: #85bffc;
+}
+
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+}
+th{
+    border: 1px solid #1991d0;
+    background-color: #85bffc;
+}
+td{
+    border: 1px solid #85bffc;
+}
+.inputtable{
+    width: 100%;
+    height: 20px;
+}
+.inputtableSmall{
+    width: 100%;
+    height: 20px;
+
+}
+
+input[type="text"], textarea{
+    background-color: #85bffc;
+
+}
