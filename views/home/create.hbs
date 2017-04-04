@@ -1,4 +1,6 @@
-<table>
+<script src="client.js"></script>
+
+<table id="myTable">
     <tr>
         <th>Övning</th>
         <th>Förklaring</th>
@@ -8,12 +10,12 @@
         <th>Total distans</th>
     </tr>
     <tr>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
+        <td><input type="text" name="exercise" class="inputtable"></td>
+        <td><input type="text" name="description" class="inputtable"></td>
+        <td><input type="text" name="distance" class="inputtable"></td>
+        <td><input type="text" name="rest" class="inputtableSmall"></td>
+        <td><input type="text" name="help" class="inputtable"></td>
+        <td><input type="text" name="total" class="inputtableSmall"></td>
     </tr>
     <tr>
         <td><input type="text" class="inputtable"></td>
@@ -72,4 +74,4 @@
         <td><input type="text" class="inputtableSmall"></td>
     </tr>
 </table>
-<input type="submit" value="Lägg till övning">
+<input type="submit" value="Lägg till övning" id="newExercise" onclick="addField();">
