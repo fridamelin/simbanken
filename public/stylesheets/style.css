@@ -54,14 +54,7 @@ h1{
     font-size: large;
     cursor: pointer;
 }
-#Btn{
-    width: 140px;
-    height: 50px;
-    margin-left: calc(50% - 70px);
-    margin-top: 50px;
-    font-size: large;
-    cursor: pointer;
-}
+
 #SignupBtn:hover{
     background-color: #85bffc;
 }
@@ -123,15 +116,32 @@ footer p{
 #maps{
     background-color: #1991d0;
     margin: 100px auto;
-    width: 700px;
+    width: 800px;
     height: 100px;
-    text-align:center;
+    text-align: center;
 }
+.image{
+    position: relative;
+    width: 120px;
+    float:left;
+    height:120px;
+    margin-left:1.5%;
+}
+
+.image p {
+  position: absolute;
+    top: 50px;
+    left:10px;
+    width: 100%;
+    display: inline;
+
+}
+
 .foldericon{
     height: 120px;
     width: 120px;
-    margin-left: 10px;
-    position: relative;
+    margin: 5px;
+
 }
 .homeicon{
     height: 50px;
@@ -143,21 +153,32 @@ footer p{
 }
 #createNew{
     width:150px;
-    height: 40px;
-    margin: 10px auto;
+    height: 50px;
+    margin-left: calc(50% - 70px);
+    font-size: large;
+    cursor: pointer;
+    margin-top: 15px;
+}
+#Btn{
+    width: 150px;
+    height: 50px;
+    margin-left: calc(50% - 70px);
+    margin-top: 50px;
     font-size: large;
     cursor: pointer;
 }
 #createNew:hover{
     background-color: #85bffc;
 }
-
-
+#Btn:hover{
+    background-color: #85bffc;
+}
 table{
     border-collapse: collapse;
     width: 100%;
     margin-top: 10px;
 }
+
 th{
     border: 1px solid #1991d0;
     background-color: #85bffc;
