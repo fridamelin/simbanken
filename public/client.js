@@ -45,8 +45,10 @@ function addField () {
     currentCell = currentRow.insertCell(-1);
     currentCell.appendChild(total);
 }
-
-
+ function removeField() {
+     document.getElementById('myTable').deleteRow(-1);
+ }
+module.exports = removeField();
 module.exports = addField();
 
 
