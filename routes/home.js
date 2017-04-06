@@ -103,23 +103,23 @@ router.route('/butterfly')
     });
 router.route('/backstroke')
     .get(function (req, res) {
-        res.render('/home/backstroke');
+        res.render('home/backstroke');
     });
 router.route('/breaststroke')
     .get(function (req, res) {
-        res.render('/home/breaststroke');
+        res.render('home/breaststroke');
     });
 router.route('/crawl')
     .get(function (req, res) {
-        res.render('/home/crawl');
+        res.render('home/crawl');
     });
 router.route('/blandat')
     .get(function (req, res) {
-        res.render('/home/blandat');
+        res.render('home/blandat');
     });
 router.route('/teknik')
     .get(function (req, res) {
-        res.render('/home/teknik');
+        res.render('home/teknik');
     });
 
 //Get the logout page

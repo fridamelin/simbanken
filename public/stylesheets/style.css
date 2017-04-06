@@ -125,18 +125,19 @@ footer p{
     width: 120px;
     float:left;
     height:120px;
-    margin-left:1.5%;
+    margin-left:1%;
 }
 
 .image p {
   position: absolute;
-    top: 50px;
-    left:10px;
+    top: 45px;
+    left:5px;
     width: 100%;
     display: inline;
-
 }
-
+a{
+    color: #020202;
+}
 .foldericon{
     height: 120px;
     width: 120px;
