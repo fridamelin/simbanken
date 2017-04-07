@@ -1,30 +1,36 @@
 function addField () {
     var myTable = document.getElementById("myTable");
-    var currentIndex = myTable.rows.length;
+    // var currentIndex = myTable.rows.length;
     var currentRow = myTable.insertRow(-1);
 
     var exercise = document.createElement("input");
-    exercise.setAttribute("name", "exercise" + currentIndex);
+    exercise.setAttribute("type", "text");
+    exercise.setAttribute("name", "exercise");
     exercise.setAttribute('class', 'inputtable');
 
     var description = document.createElement("input");
-    description.setAttribute("name", "description" + currentIndex);
+    description.setAttribute("type", "text");
+    description.setAttribute("name", "description");
     description.setAttribute('class', 'inputtable');
 
     var distance = document.createElement("input");
-    distance.setAttribute("name", "distance" + currentIndex);
+    distance.setAttribute("type", "text");
+    distance.setAttribute("name", "distance");
     distance.setAttribute('class', 'inputtable');
 
     var rest = document.createElement('input');
-    rest.setAttribute('name', 'rest' + currentIndex);
+    rest.setAttribute('type', 'text');
+    rest.setAttribute('name', 'rest');
     rest.setAttribute('class', 'inputtableSmall');
 
     var help = document.createElement('input');
-    rest.setAttribute('name', 'help' + currentIndex);
+    help.setAttribute('type', 'text');
+    help.setAttribute('name', 'help');
     help.setAttribute('class', 'inputtable');
 
     var total = document.createElement('input');
-    total.setAttribute('name', 'total' + currentIndex);
+    total.setAttribute('type', 'text');
+    total.setAttribute('name', 'total');
     total.setAttribute('class', 'inputtableSmall');
 
     var currentCell = currentRow.insertCell(-1);

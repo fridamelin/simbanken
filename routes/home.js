@@ -1,7 +1,7 @@
 let router = require('express').Router();
 let User = require('../models/User');
 let bcrypt = require('bcrypt-nodejs');
-
+let Activity = require('../models/activity');
 
 router.route('/')
     .get(function (req, res) {
@@ -76,7 +76,7 @@ router.route('/login')
                      if (result) {
                         req.session.user = data[0];
                         res.locals.user = req.session.user;
-                        res.redirect('/strokes');
+                        res.redirect('/');
                     }
                 });
             }
@@ -96,6 +96,45 @@ router.route('/login')
 router.route('/create')
     .get(function (req, res) {
         res.render('home/create');
+    })
+    .post(function (req, res) {
+        console.log(req.body);
+        Activity.findOne().sort('-passID').exec((err, item) => {
+            let passID = Number.parseInt(item.passID) + 1;
+
+            let stroke = req.body.stroke === "" ? null : req.body.stroke;
+
+            let nrOfActivities = req.body.exercise.length;
+
+            for (let i = 0; i < nrOfActivities; i++) {
+                let newActivity = new Activity({
+                    exercise: req.body.exercise[i],
+                    description: req.body.description[i],
+                    distance: req.body.distance[i],
+                    rest: req.body.rest[i],
+                    help: req.body.help[i],
+                    total: req.body.total[i],
+                    stroke: stroke,
+                    passID: passID
+                });
+
+                newActivity.save()
+                    .then(function () {
+                        console.log("saved in database!");
+                        // res.redirect('/create');
+                    })
+                    .catch(function (err) {
+                        console.log('catch' + err);
+                        req.session.flash = {
+                            type: 'fail',
+                            message: 'You need to write something in your snippet!'
+                        };
+                        res.redirect('/login');
+                    });
+            }
+
+            res.redirect('/create');
+        });
     });
 router.route('/butterfly')
     .get(function (req,res) {
@@ -107,7 +146,11 @@ router.route('/backstroke')
     });
 router.route('/breaststroke')
     .get(function (req, res) {
-        res.render('home/breaststroke');
+        Activity.find({stroke: "breaststroke"}, function(error, data) {
+            console.log(data);
+
+            res.render('home/breaststroke', {data: data});
+        });
     });
 router.route('/crawl')
     .get(function (req, res) {

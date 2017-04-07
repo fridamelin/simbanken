@@ -1,5 +1,6 @@
 <script src="client.js"></script>
 
+<form action="/create" method="post" class="save">
 <table id="myTable">
     <tr>
         <th>Övning</th>
@@ -18,74 +19,31 @@
         <td><input type="text" name="total" class="inputtableSmall"></td>
     </tr>
     <tr>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-    </tr>
-    <tr>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-    </tr>
-    <tr>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-    </tr>
-    <tr>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-    </tr>
-    <tr>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-    </tr>
-    <tr>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-    </tr>
-    <tr>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
-        <td><input type="text" class="inputtable"></td>
-        <td><input type="text" class="inputtableSmall"></td>
+        <td><input type="text" name="exercise" class="inputtable"></td>
+        <td><input type="text" name="description" class="inputtable"></td>
+        <td><input type="text" name="distance" class="inputtable"></td>
+        <td><input type="text" name="rest" class="inputtableSmall"></td>
+        <td><input type="text" name="help" class="inputtable"></td>
+        <td><input type="text" name="total" class="inputtableSmall"></td>
     </tr>
 </table>
-<input type="submit" value="Lägg till rad" id="newExercise" onclick="addField();">
-<input type="submit" value="Ta bort rad" id="newExercise" onclick="removeField();">
 
 
     <div id="total">
-        <select>
-            <option value="Välj">Välj kategori</option>
-            <option value="Fjäril">Fjäril</option>
-            <option value="Ryggsim">Ryggsim</option>
-            <option value="Bröstsim">Bröstsim</option>
-            <option value="Frisim">Frisim</option>
-            <option value="Blandat">Blandat</option>
+        <select name="stroke">
+            <option value="">Välj kategori</option>
+            <option value="butterfly">Fjäril</option>
+            <option value="backstroke">Ryggsim</option>
+            <option value="breaststroke">Bröstsim</option>
+            <option value="crawl">Frisim</option>
+            <option value="mixed">Blandat</option>
+            <option value="technical">Teknik</option>
         </select>
         <p>Totalt:_________</p>
     </div>
+
+        <input type="submit" value="Spara" id="save">
+    </form>
+
+<input type="submit" value="Lägg till rad" id="newExercise" onclick="addField();">
+<input type="submit" value="Ta bort rad" id="newExercise" onclick="removeField();">
