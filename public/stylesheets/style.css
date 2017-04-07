@@ -1,3 +1,4 @@
+
 ::-webkit-scrollbar {
     width: 0px;
 }
@@ -23,6 +24,7 @@ h1{
     width: 1000px;
     height: 500px;
     border: solid 2px #85bffc;
+    overflow: auto;
 }
 #start{
     margin: auto;
@@ -142,7 +144,6 @@ a{
     height: 120px;
     width: 120px;
     margin: 5px;
-
 }
 .homeicon{
     height: 50px;
@@ -201,4 +202,15 @@ td{
     width: 300px;
     float: right;
     text-align: right;
+}
+#save{
+    width: 100px;
+    height: 40px;
+    margin-left: calc(50% - 50px);
+    margin-top: 20px;
+    font-size: large;
+    cursor: pointer;
+}
+#save:hover{
+    background-color: #85bffc;
 }
