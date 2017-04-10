@@ -8,6 +8,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
 }
+.hidden {display:none;}
 #upper{
     height: 100px;
 }
@@ -239,4 +240,8 @@ td{
     left: calc(50% - 40px);
     width: 100%;
     display: inline;
+}
+#upload{
+    margin-left: 350px;
+    margin-top: 400px ;
 }

@@ -43,7 +43,13 @@ router.route('/createMembership')
     }
 });
     });
-
+router.route('/403')
+    .get(function (req, res) {
+        res.render('error/403');
+    })
+    .post(function (req, res) {
+        res.render('error/403');
+    });
 router.route('/strokes')
     .get(function (req, res) {
         res.render('home/strokes');
@@ -64,7 +70,6 @@ router.route('/login')
         });
     })
     .post(function (req, res) {
-        console.log(req.body);
         let query = User.find({username: req.body.username});
         query.exec().then(function (data) {
             console.log(data);
@@ -147,9 +152,26 @@ router.route('/backstroke')
 router.route('/breaststroke')
     .get(function (req, res) {
         Activity.find({stroke: "breaststroke"}, function(error, data) {
-            console.log(data);
+            // console.log(data);
 
-            res.render('home/breaststroke', {data: data});
+            let counter = 0;
+
+            let test = [];
+            test[counter] = [];
+            test[counter].push(data[0]);
+
+            for (let i = 1; i < data.length; i++) {
+                if (data[i].passID !== test[counter][0].passID) {
+                    counter++;
+                    test[counter] = [];
+                }
+
+                test[counter].push(data[i]);
+            }
+
+            console.log(test);
+
+            res.render('home/breaststroke', {data: test});
         });
     });
 router.route('/crawl')
@@ -183,9 +205,9 @@ router.route('/protokoll')
     .post(function (req, res) {
 
     });
-router.route('/utvarderingar')
+router.route('/utvardering')
     .get (function (req, res) {
-        res.render('home/utvarderingar');
+        res.render('home/utvardering');
     });
 
 //Get the logout page

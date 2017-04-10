@@ -56,20 +56,3 @@ function addField () {
  }
 module.exports = removeField();
 module.exports = addField();
-
-
-//
-// function tableFunction() {
-//
-//     console.log('hej');
-// let table = document.getElementById('myTable');
-//
-//
-//     let addBox = document.createElement('input');
-//     addBox.setAttribute('type', 'text');
-//     addBox.setAttribute('class', 'inputtable');
-//
-//
-//     table.appendChild(addBox);
-// }
-//     module.exports = tableFunction();
