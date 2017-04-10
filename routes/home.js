@@ -127,7 +127,7 @@ router.route('/create')
                         console.log('catch' + err);
                         req.session.flash = {
                             type: 'fail',
-                            message: 'You need to write something in your snippet!'
+                            message: 'Hey! You need to write something!'
                         };
                         res.redirect('/login');
                     });
@@ -163,6 +163,29 @@ router.route('/blandat')
 router.route('/teknik')
     .get(function (req, res) {
         res.render('home/teknik');
+    });
+router.route('/document')
+    .get(function (req, res) {
+        res.render('home/document');
+    });
+router.route('/kunskapsstege')
+    .get (function (req, res) {
+        res.render('home/kunskapsstege');
+    });
+router.route('/utbildning')
+    .get (function (req, res) {
+        res.render('home/utbildning');
+    });
+router.route('/protokoll')
+    .get (function (req, res) {
+        res.render('home/protokoll');
+    })
+    .post(function (req, res) {
+
+    });
+router.route('/utvarderingar')
+    .get (function (req, res) {
+        res.render('home/utvarderingar');
     });
 
 //Get the logout page
