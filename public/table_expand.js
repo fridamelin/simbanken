@@ -3,10 +3,16 @@ $("thead").find("th").on("click", function() {
     $(this).closest("table").find("tbody").toggle();
 });
 */
-let tables = document.querySelectorAll(".passTable");
 
-for (let i = 0; i < tables.length; i++) {
-    tables[i].addEventListener("click", function(e) {
-        this.toggle();
-    })
+function HideFunc(tableid) {
+
+    let tables = document.querySelectorAll('.tableClass')[tableid];
+
+    if(tables.style.display === 'none'){
+        tables.style.display = 'block';
+    } else {
+        tables.style.display = 'none';
+    }
 }
+
+module.exports = HideFunc();
