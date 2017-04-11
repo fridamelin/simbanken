@@ -1,0 +1,33 @@
+{{#each data}}
+
+    <div class="polaroid">
+        <img src="testbild.jpg" onclick="HideFunc({{@index}});" class="PassImg">
+        <div class="container">
+            <p>Lite information här</p>
+        </div>
+    </div>
+    <div class="tableClass">
+        <table border="1" class="passTable">
+            <tbody>
+            <tr>
+                <th>Övning</th>
+                <th>Förklaring</th>
+                <th>Distans</th>
+                <th>Vila</th>
+                <th>Hjälpmedel</th>
+                <th>Totalt</th>
+            </tr>
+            {{#each this}}
+                <tr>
+                    <td>{{this.exercise}}</td>
+                    <td>{{this.description}}</td>
+                    <td>{{this.distance}}</td>
+                    <td>{{this.rest}}</td>
+                    <td>{{this.help}}</td>
+                    <td>{{this.total}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+{{/each}}

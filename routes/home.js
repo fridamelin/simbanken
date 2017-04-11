@@ -137,17 +137,52 @@ router.route('/create')
                         res.redirect('/login');
                     });
             }
-
             res.redirect('/create');
         });
     });
 router.route('/butterfly')
     .get(function (req,res) {
-        res.render('home/butterfly');
+        Activity.find({stroke: "butterfly"}, function(error, data) {
+            // console.log(data);
+
+            let counter = 0;
+
+            let test = [];
+            test[counter] = [];
+            test[counter].push(data[0]);
+
+            for (let i = 1; i < data.length; i++) {
+                if (data[i].passID !== test[counter][0].passID) {
+                    counter++;
+                    test[counter] = [];
+                }
+                test[counter].push(data[i]);
+            }
+            console.log(test);
+            res.render('home/butterfly', {data: test});
+        });
     });
 router.route('/backstroke')
     .get(function (req, res) {
-        res.render('home/backstroke');
+        Activity.find({stroke: "backstroke"}, function(error, data) {
+            // console.log(data);
+
+            let counter = 0;
+
+            let test = [];
+            test[counter] = [];
+            test[counter].push(data[0]);
+
+            for (let i = 1; i < data.length; i++) {
+                if (data[i].passID !== test[counter][0].passID) {
+                    counter++;
+                    test[counter] = [];
+                }
+                test[counter].push(data[i]);
+            }
+            console.log(test);
+            res.render('home/backstroke', {data: test});
+        });
     });
 router.route('/breaststroke')
     .get(function (req, res) {
@@ -168,19 +203,35 @@ router.route('/breaststroke')
 
                 test[counter].push(data[i]);
             }
-
             console.log(test);
-
             res.render('home/breaststroke', {data: test});
         });
     });
 router.route('/crawl')
     .get(function (req, res) {
-        res.render('home/crawl');
+        Activity.find({stroke: "crawl"}, function(error, data) {
+            // console.log(data);
+
+            let counter = 0;
+
+            let test = [];
+            test[counter] = [];
+            test[counter].push(data[0]);
+
+            for (let i = 1; i < data.length; i++) {
+                if (data[i].passID !== test[counter][0].passID) {
+                    counter++;
+                    test[counter] = [];
+                }
+                test[counter].push(data[i]);
+            }
+            console.log(test);
+            res.render('home/crawl', {data: test});
+        });
     });
-router.route('/blandat')
+router.route('/mixed')
     .get(function (req, res) {
-        res.render('home/blandat');
+        res.render('home/mixed');
     });
 router.route('/teknik')
     .get(function (req, res) {

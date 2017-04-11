@@ -1,8 +1,3 @@
-/*
-$("thead").find("th").on("click", function() {
-    $(this).closest("table").find("tbody").toggle();
-});
-*/
 
 function HideFunc(tableid) {
 
