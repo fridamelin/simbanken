@@ -116,27 +116,31 @@ footer{
 footer p{
     text-align: center;
 }
-#maps{
+.maps{
     background-color: #1991d0;
     margin: 100px auto;
     width: 800px;
     height: 100px;
     text-align: center;
 }
+.maps-document {
+    width:550px;
+}
+.maps-protokoll {
+    width: 300px;
+}
 .image{
     position: relative;
     width: 120px;
     float:left;
     height:120px;
-    margin-left:1%;
+    margin-left:1.5%;
 }
 
 .image p {
-  position: absolute;
-    top: 45px;
-    left:5px;
+    position: absolute;
+    top: 38px;
     width: 100%;
-    display: inline;
 }
 a{
     color: #020202;
@@ -263,7 +267,14 @@ td{
 }
 .divDoc{
     display: inline;
+    margin-left: 100px;
+    float: right;
 }
 .pdfIcon{
-    height: 100px;;
+    height: 100px;
+
+}
+.foldericon2{
+    width: 120px;
+    height: 120px;
 }

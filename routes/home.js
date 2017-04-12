@@ -3,6 +3,7 @@ let User = require('../models/User');
 let bcrypt = require('bcrypt-nodejs');
 let Activity = require('../models/activity');
 let FilePdf = require('../models/Pdf');
+let upload = require('../upload');
 
 router.route('/')
     .get(function (req, res) {
@@ -256,18 +257,34 @@ router.route('/map_protokoll')
     });
 router.route('/board_protokoll')
     .get(function (req, res) {
-        res.render('home/board_protokoll');
-    });
-router.route('/protokoll')
-    .get(function (req, res) {
+        console.log(req.url);
 
-        FilePdf.find({}, function (error, data) {
+        FilePdf.find({type: req.url}, function (error, data) {
             if (error) {
                 console.log(error);
             }
 
             console.log(data);
 
+            res.render('home/board_protokoll', {pdf: data});
+        });
+    })
+    .post(function (req, res) {
+        if (!req.files)
+            return res.status(400).send('No files were uploaded.');
+
+        let sparad = upload.PDF(req);
+        res.redirect('/board_protokoll');
+    });
+router.route('/protokoll')
+    .get(function (req, res) {
+
+        //Gör likadant som på den andra board_protokoll
+        FilePdf.find({}, function (error, data) {
+            if (error) {
+                console.log(error);
+            }
+            console.log(data);
             res.render('home/protokoll', {pdf: data});
         });
 
@@ -280,8 +297,6 @@ router.route('/protokoll')
         pdf.mv('public/protokoll/' + req.files.pdf.name, function (err) {
             if (err)
                 return res.status(500).send(err);
-
-            //res.redirect('/protokoll');
         });
 
 
@@ -319,4 +334,5 @@ router.route('/logout')
     .post(function (req, res) {
         res.redirect('/logout');
     });
+
 module.exports = router;

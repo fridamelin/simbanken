@@ -1,6 +1,6 @@
 {{#each pdf}}
     <div class="divDoc">
-        <a href="/protokoll/{{this.path}}" target="_blank"><img src="/image.png" class="pdfIcon">{{this.path}}</a>
+        <a href="/protokoll_board/{{this.path}}" target="_blank"><img src="/test.png" class="pdfIcon">{{this.path}}</a>
     </div>
 {{/each}}
 
@@ -9,5 +9,6 @@
     <form action="/board_protokoll" method="post" enctype="multipart/form-data">
         <input type="file" name="pdf" id="chooseBtn" accept="file_extension"/>
         <input type="submit" value="Upload"/>
+
     </form>
 </div>
