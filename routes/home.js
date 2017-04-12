@@ -2,6 +2,7 @@ let router = require('express').Router();
 let User = require('../models/User');
 let bcrypt = require('bcrypt-nodejs');
 let Activity = require('../models/activity');
+let FilePdf = require('../models/Pdf');
 
 router.route('/')
     .get(function (req, res) {
@@ -12,36 +13,36 @@ router.route('/createMembership')
         res.render('home/createMembership');
     })
     .post(function (req, res) {
-        let newCreate = new User ({
+        let newCreate = new User({
             username: req.body.username,
             password: req.body.password
         });
 
-    User.findOne({username: req.body.username}).then(function (data) {
-    if (data) {
-        req.session.flash = {
-            type: 'fail',
-            message: 'This username already exist, please try again!'
-        };
-        res.redirect('/createMembership');
-    }
-    else {
-        newCreate.save()
-            .then(function () {
-                res.redirect('/');
-            }).catch(function (data) {
+        User.findOne({username: req.body.username}).then(function (data) {
             if (data) {
                 req.session.flash = {
                     type: 'fail',
-                    message: 'The username must be at least 4 characters,' +
-                    'and the password 6 characters!'
+                    message: 'This username already exist, please try again!'
                 };
-
                 res.redirect('/createMembership');
             }
+            else {
+                newCreate.save()
+                    .then(function () {
+                        res.redirect('/');
+                    }).catch(function (data) {
+                    if (data) {
+                        req.session.flash = {
+                            type: 'fail',
+                            message: 'The username must be at least 4 characters,' +
+                            'and the password 6 characters!'
+                        };
+
+                        res.redirect('/createMembership');
+                    }
+                });
+            }
         });
-    }
-});
     });
 router.route('/403')
     .get(function (req, res) {
@@ -73,12 +74,12 @@ router.route('/login')
         let query = User.find({username: req.body.username});
         query.exec().then(function (data) {
             console.log(data);
-            if(data.length > 0) {
+            if (data.length > 0) {
                 bcrypt.compare(req.body.password, data[0].password, function (error, result) {
-                    if(error){
+                    if (error) {
                         console.log(error);
                     }
-                     if (result) {
+                    if (result) {
                         req.session.user = data[0];
                         res.locals.user = req.session.user;
                         res.redirect('/');
@@ -141,8 +142,8 @@ router.route('/create')
         });
     });
 router.route('/butterfly')
-    .get(function (req,res) {
-        Activity.find({stroke: "butterfly"}, function(error, data) {
+    .get(function (req, res) {
+        Activity.find({stroke: "butterfly"}, function (error, data) {
             // console.log(data);
 
             let counter = 0;
@@ -164,7 +165,7 @@ router.route('/butterfly')
     });
 router.route('/backstroke')
     .get(function (req, res) {
-        Activity.find({stroke: "backstroke"}, function(error, data) {
+        Activity.find({stroke: "backstroke"}, function (error, data) {
             // console.log(data);
 
             let counter = 0;
@@ -186,7 +187,7 @@ router.route('/backstroke')
     });
 router.route('/breaststroke')
     .get(function (req, res) {
-        Activity.find({stroke: "breaststroke"}, function(error, data) {
+        Activity.find({stroke: "breaststroke"}, function (error, data) {
             // console.log(data);
 
             let counter = 0;
@@ -209,7 +210,7 @@ router.route('/breaststroke')
     });
 router.route('/crawl')
     .get(function (req, res) {
-        Activity.find({stroke: "crawl"}, function(error, data) {
+        Activity.find({stroke: "crawl"}, function (error, data) {
             // console.log(data);
 
             let counter = 0;
@@ -242,22 +243,69 @@ router.route('/document')
         res.render('home/document');
     });
 router.route('/kunskapsstege')
-    .get (function (req, res) {
+    .get(function (req, res) {
         res.render('home/kunskapsstege');
     });
 router.route('/utbildning')
-    .get (function (req, res) {
+    .get(function (req, res) {
         res.render('home/utbildning');
     });
+router.route('/map_protokoll')
+    .get(function (req, res) {
+        res.render('home/map_protokoll');
+    });
+router.route('/board_protokoll')
+    .get(function (req, res) {
+        res.render('home/board_protokoll');
+    });
 router.route('/protokoll')
-    .get (function (req, res) {
-        res.render('home/protokoll');
+    .get(function (req, res) {
+
+        FilePdf.find({}, function (error, data) {
+            if (error) {
+                console.log(error);
+            }
+
+            console.log(data);
+
+            res.render('home/protokoll', {pdf: data});
+        });
+
     })
     .post(function (req, res) {
+        if (!req.files)
+            return res.status(400).send('No files were uploaded.');
 
+        let pdf = req.files.pdf;
+        pdf.mv('public/protokoll/' + req.files.pdf.name, function (err) {
+            if (err)
+                return res.status(500).send(err);
+
+            //res.redirect('/protokoll');
+        });
+
+
+        let PdfSchema = new FilePdf({
+            path: req.files.pdf.name,
+            owner: req.session.user.username
+        });
+
+        PdfSchema.save()
+            .then(function () {
+                console.log("saved in database!");
+                // res.redirect('/create');
+            })
+            .catch(function (err) {
+                console.log('catch' + err);
+                req.session.flash = {
+                    type: 'fail',
+                    message: 'Hey! You need to write something!'
+                };
+                res.redirect('/protokoll');
+            });
     });
 router.route('/utvardering')
-    .get (function (req, res) {
+    .get(function (req, res) {
         res.render('home/utvardering');
     });
 

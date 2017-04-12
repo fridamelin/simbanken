@@ -6,8 +6,10 @@ let exhbs = require('express-handlebars');
 let path = require('path');
 let bodyParser = require('body-parser');
 let mongoose = require('./config/mongoose');
+let fileUpload = require('express-fileupload');
 
 let app = express();
+app.use(fileUpload());
 let port = process.env.PORT || 8000;
 
 mongoose();

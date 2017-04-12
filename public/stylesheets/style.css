@@ -261,3 +261,9 @@ td{
     text-align: center;
     padding: 2px;
 }
+.divDoc{
+    display: inline;
+}
+.pdfIcon{
+    height: 100px;;
+}
