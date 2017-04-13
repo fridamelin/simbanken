@@ -72,21 +72,17 @@ router.route('/login')
         });
     })
     .post(function (req, res) {
-        let query = User.find({username: req.body.username});
+        let query = User.find({'username': req.body.username});
         query.exec().then(function (data) {
             console.log(data);
-            if (data.length > 0) {
+
                 bcrypt.compare(req.body.password, data[0].password, function (error, result) {
-                    if (error) {
-                        console.log(error);
-                    }
+
                     if (result) {
                         req.session.user = data[0];
-                        res.locals.user = req.session.user;
+                        //res.locals.user = req.session.user;
                         res.redirect('/');
                     }
-                });
-            }
             else {
                 req.session.flash = {
                     type: 'fail',
@@ -94,6 +90,7 @@ router.route('/login')
                 };
                 res.redirect('/login');
             }
+                });
         }).catch(function (err) {
             // Show the error
             console.log("error: " + err);
@@ -279,7 +276,7 @@ router.route('/board_protokoll')
 router.route('/protokoll')
     .get(function (req, res) {
     console.log(req.url);
-        //Gör likadant som på den andra board_protokoll
+
         FilePdf.find({type: req.url}, function (error, data) {
             if (error) {
                 console.log(error);
