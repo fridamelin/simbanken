@@ -278,9 +278,9 @@ router.route('/board_protokoll')
     });
 router.route('/protokoll')
     .get(function (req, res) {
-
+    console.log(req.url);
         //Gör likadant som på den andra board_protokoll
-        FilePdf.find({}, function (error, data) {
+        FilePdf.find({type: req.url}, function (error, data) {
             if (error) {
                 console.log(error);
             }
@@ -293,32 +293,11 @@ router.route('/protokoll')
         if (!req.files)
             return res.status(400).send('No files were uploaded.');
 
-        let pdf = req.files.pdf;
-        pdf.mv('public/protokoll/' + req.files.pdf.name, function (err) {
-            if (err)
-                return res.status(500).send(err);
+        let sparad = upload.PDF(req);
+
+            res.redirect('/protokoll');
         });
 
-
-        let PdfSchema = new FilePdf({
-            path: req.files.pdf.name,
-            owner: req.session.user.username
-        });
-
-        PdfSchema.save()
-            .then(function () {
-                console.log("saved in database!");
-                // res.redirect('/create');
-            })
-            .catch(function (err) {
-                console.log('catch' + err);
-                req.session.flash = {
-                    type: 'fail',
-                    message: 'Hey! You need to write something!'
-                };
-                res.redirect('/protokoll');
-            });
-    });
 router.route('/utvardering')
     .get(function (req, res) {
         res.render('home/utvardering');
