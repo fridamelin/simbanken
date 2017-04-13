@@ -1,6 +1,9 @@
 {{#each pdf}}
     <div class="divDoc">
-        <a href="/protokoll_board/{{this.path}}" target="_blank"><img src="/test.png" class="pdfIcon">{{this.path}}</a>
+        <a href="/protokoll_board/{{this.path}}" target="_blank"><img src="/test.png" class="pdfIcon"></a>
+        <div class="infoDoc">
+            <p>{{this.path}}</p>
+        </div>
     </div>
 {{/each}}
 

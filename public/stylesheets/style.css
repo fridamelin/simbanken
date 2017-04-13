@@ -196,6 +196,9 @@ table{
     width: 100%;
     margin-top: 10px;
 }
+.tableClass {
+    display:none;
+}
 
 th{
     border: 1px solid #1991d0;
@@ -267,8 +270,15 @@ td{
 }
 .divDoc{
     display: inline;
-    margin-left: 100px;
-    float: right;
+    float: left;
+    width: 33.333%;
+    text-align: center;
+}
+.divDoc img{
+
+}
+.infoDoc p{
+
 }
 .pdfIcon{
     height: 100px;
