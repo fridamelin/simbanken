@@ -124,7 +124,7 @@ footer p{
     text-align: center;
 }
 .maps-document {
-    width:550px;
+    width:650px;
 }
 .maps-protokoll {
     width: 300px;
@@ -199,7 +199,6 @@ table{
 .tableClass {
     display:none;
 }
-
 th{
     border: 1px solid #1991d0;
     background-color: #85bffc;
@@ -273,16 +272,11 @@ td{
     float: left;
     width: 33.333%;
     text-align: center;
+    font-weight: bold;
 }
-.divDoc img{
 
-}
-.infoDoc p{
-
-}
 .pdfIcon{
     height: 100px;
-
 }
 .foldericon2{
     width: 120px;

@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0e62d0d-04ef-4e43-aab1-febec3e14483" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/home/dokument.hbs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/public/stylesheets/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/home/board_protokoll.hbs" afterPath="$PROJECT_DIR$/views/home/board_protokoll.hbs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/home/protokoll.hbs" afterPath="$PROJECT_DIR$/views/home/protokoll.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/home.js" afterPath="$PROJECT_DIR$/routes/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/home/document.hbs" afterPath="$PROJECT_DIR$/views/home/document.hbs" />
     </list>
     <ignored path="fm222gn-project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,61 +29,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1360">
-              <caret line="86" column="37" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
+            <state relative-caret-position="80">
+              <caret line="253" column="27" selection-start-line="253" selection-start-column="27" selection-end-line="253" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upload.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="upload.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/upload.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
               <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="READMEfm222gn.md" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/1dv023/fm222gn-examination-3/READMEfm222gn.md">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="51" column="158" selection-start-line="51" selection-start-column="158" selection-end-line="51" selection-end-column="158" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="breaststroke.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/home/breaststroke.hbs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="table_expand.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/table_expand.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="55" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -101,8 +62,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="200" column="1" selection-start-line="200" selection-start-column="1" selection-end-line="200" selection-end-column="1" />
+            <state relative-caret-position="346">
+              <caret line="128" column="17" selection-start-line="128" selection-start-column="17" selection-end-line="128" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -111,8 +72,28 @@
       <file leaf-file-name="document.hbs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/home/document.hbs">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dokument.hbs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/home/dokument.hbs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utbildning.hbs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/home/utbildning.hbs">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+              <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="5" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -163,17 +144,18 @@
         <option value="$PROJECT_DIR$/views/home/backstroke.hbs" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/views/home/strokes.hbs" />
-        <option value="$PROJECT_DIR$/views/home/document.hbs" />
         <option value="$PROJECT_DIR$/views/home/map_protokoll.hbs" />
         <option value="$PROJECT_DIR$/models/Pdf.js" />
         <option value="$PROJECT_DIR$/upload.js" />
         <option value="$PROJECT_DIR$/views/layouts/default.hbs" />
-        <option value="$PROJECT_DIR$/routes/home.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$USER_HOME$/1dv023/fm222gn-examination-3/READMEfm222gn.md" />
         <option value="$PROJECT_DIR$/views/home/protokoll.hbs" />
         <option value="$PROJECT_DIR$/views/home/board_protokoll.hbs" />
+        <option value="$PROJECT_DIR$/views/home/document.hbs" />
+        <option value="$PROJECT_DIR$/views/home/dokument.hbs" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/routes/home.js" />
       </list>
     </option>
   </component>
@@ -487,12 +469,12 @@
       <workItem from="1491911020048" duration="4992000" />
       <workItem from="1491985886082" duration="16014000" />
       <workItem from="1492023588932" duration="103000" />
-      <workItem from="1492068345899" duration="11143000" />
+      <workItem from="1492068345899" duration="12004000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108216000" />
+    <option name="totallyTimeSpent" value="109077000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1672" y="-8" width="1696" height="1026" extended-state="6" />
@@ -532,13 +514,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/home/index.hbs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -611,13 +586,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/home/utbildning.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -824,10 +792,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/home/document.hbs">
+    <entry file="file://$PROJECT_DIR$/public/table_expand.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="6" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+        <state relative-caret-position="51">
+          <caret line="3" column="55" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -856,26 +824,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/table_expand.js">
+    <entry file="file://$PROJECT_DIR$/views/home/document.hbs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="55" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="55" />
+        <state relative-caret-position="465">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/home/utbildning.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="5" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/home/dokument.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="200" column="1" selection-start-line="200" selection-start-column="1" selection-end-line="200" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1360">
-          <caret line="86" column="37" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
+        <state relative-caret-position="346">
+          <caret line="128" column="17" selection-start-line="128" selection-start-column="17" selection-end-line="128" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -884,6 +860,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="253" column="27" selection-start-line="253" selection-start-column="27" selection-end-line="253" selection-end-column="27" />
           <folding />
         </state>
       </provider>
