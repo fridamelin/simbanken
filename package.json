@@ -18,7 +18,6 @@
   "homepage": "https://github.com/1dv430/fm222gn-project#readme",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
-    "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "express-fileupload": "^0.1.2",
