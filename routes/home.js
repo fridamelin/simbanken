@@ -230,7 +230,27 @@ router.route('/crawl')
     });
 router.route('/mixed')
     .get(function (req, res) {
-        res.render('home/mixed');
+        Activity.find({stroke: "mixed"}, function (error, data) {
+            // console.log(data);
+
+            let counter = 0;
+
+            let test = [];
+            test[counter] = [];
+            test[counter].push(data[0]);
+
+            for (let i = 1; i < data.length; i++) {
+                if (data[i].passID !== test[counter][0].passID) {
+                    counter++;
+                    test[counter] = [];
+                }
+
+                test[counter].push(data[i]);
+            }
+            console.log(test);
+            res.render('home/mixed', {data: test});
+        });
+
     });
 router.route('/teknik')
     .get(function (req, res) {
@@ -250,13 +270,13 @@ router.route('/utbildning')
     });
 // router.route('/dokument')
 //     .get(function (req, res) {
+//         console.log(req.url);
+//
 //         FilePdf.find({type: req.url}, function (error, data) {
 //             if (error) {
 //                 console.log(error);
 //             }
-//
 //             console.log(data);
-//
 //             res.render('home/dokument', {pdf: data});
 //         })
 //             .post(function (req, res) {
@@ -266,7 +286,7 @@ router.route('/utbildning')
 //                 let sparad = upload.PDF(req);
 //                 res.redirect('/dokument');
 //             });
-//     });
+//         });
 router.route('/map_protokoll')
     .get(function (req, res) {
         res.render('home/map_protokoll');
@@ -279,9 +299,6 @@ router.route('/board_protokoll')
             if (error) {
                 console.log(error);
             }
-
-            console.log(data);
-
             res.render('home/board_protokoll', {pdf: data});
         });
     })
@@ -314,10 +331,8 @@ router.route('/protokoll')
             res.redirect('/protokoll');
         });
 
-router.route('/utvardering')
-    .get(function (req, res) {
-        res.render('home/utvardering');
-    });
+
+
 
 //Get the logout page
 router.route('/logout')
