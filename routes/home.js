@@ -268,25 +268,25 @@ router.route('/utbildning')
     .get(function (req, res) {
         res.render('home/utbildning');
     });
-// router.route('/dokument')
-//     .get(function (req, res) {
-//         console.log(req.url);
-//
-//         FilePdf.find({type: req.url}, function (error, data) {
-//             if (error) {
-//                 console.log(error);
-//             }
-//             console.log(data);
-//             res.render('home/dokument', {pdf: data});
-//         })
-//             .post(function (req, res) {
-//                 if (!req.files)
-//                     return res.status(400).send('No files were uploaded.');
-//
-//                 let sparad = upload.PDF(req);
-//                 res.redirect('/dokument');
-//             });
-//         });
+router.route('/dokument')
+    .get(function (req, res) {
+        console.log(req.url);
+
+         // FilePdf.find({type: req.url}, function (error, data) {
+         //     if (error) {
+         //         console.log(error);
+         //     }
+        // console.log(data);
+             res.render('home/dokument');
+        });
+             // .post(function (req, res) {
+             //     if (!req.files)
+             //         return res.status(400).send('No files were uploaded.');
+             //
+             //     let sparad = upload.PDF(req);
+             //     res.redirect('/dokument');
+             // });
+      //   });
 router.route('/map_protokoll')
     .get(function (req, res) {
         res.render('home/map_protokoll');
@@ -320,7 +320,6 @@ router.route('/protokoll')
             console.log(data);
             res.render('home/protokoll', {pdf: data});
         });
-
     })
     .post(function (req, res) {
         if (!req.files)

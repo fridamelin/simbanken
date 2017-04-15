@@ -12,10 +12,11 @@
 </div>
 <div id="wrapper">
 {{#if user}}
+
     <a href="/">
         <img src="/homeicon.png" alt="homeicon" class="homeicon">
     </a>
-
+    <img src="/tillbaka.png" alt="tillbaka" class="tillbaka" onclick="history.go(-1);">
         <div id="welcomeuser">
             <p>Inloggad som: {{user.username}}</p>
             <form action="/logout" method="post">

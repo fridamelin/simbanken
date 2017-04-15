@@ -155,6 +155,12 @@ a{
     width: 50px;
     float: right;
 }
+.tillbaka{
+    height: 50px;
+    width: 50px;
+    float: right;
+    margin-right: 5px;
+}
 .startP{
     text-align: center;
 }
