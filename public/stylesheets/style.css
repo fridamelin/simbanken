@@ -160,7 +160,9 @@ a{
     width: 50px;
     float: right;
     margin-right: 5px;
+    cursor: pointer;
 }
+
 .startP{
     text-align: center;
 }
