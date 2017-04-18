@@ -1,12 +1,12 @@
 
-<!--{{#each pdf}}-->
-    <!--<div class="divDoc">-->
-        <!--<a href="/dokument_folder/{{this.path}}" target="_blank"><img src="/test.png" class="pdfIcon"></a>-->
-        <!--<div class="infoDoc">-->
-            <!--<p>{{this.path}}</p>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--{{/each}}-->
+{{#each pdf}}
+    <div class="divDoc">
+        <a href="/dokument_folder/{{this.path}}" target="_blank"><img src="/test.png" class="pdfIcon"></a>
+        <div class="infoDoc">
+            <p>{{this.path}}</p>
+        </div>
+    </div>
+{{/each}}
 
 
 <div id="upload">
@@ -14,4 +14,4 @@
         <input type="file" name="pdf" id="chooseBtn">
         <input type="submit" value="Upload PDF">
     </form>
-</div>>
+</div>
