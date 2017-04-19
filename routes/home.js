@@ -299,6 +299,7 @@ router.route('/board_protokoll')
             if (error) {
                 console.log(error);
             }
+            console.log(data);
             res.render('home/board_protokoll', {pdf: data});
         });
     })

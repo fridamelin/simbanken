@@ -1,7 +1,7 @@
 
 {{#each pdf}}
     <div class="divDoc">
-        <a href="/dokument_folder/{{this.path}}" target="_blank"><img src="/test.png" class="pdfIcon"></a>
+        <a href="/dokument/{{this.path}}" target="_blank"><img src="/test.png" class="pdfIcon"></a>
         <div class="infoDoc">
             <p>{{this.path}}</p>
         </div>
@@ -10,7 +10,7 @@
 
 
 <div id="upload">
-    <form action="/dokument" method="post">
+    <form action="/dokument" method="post" enctype="multipart/form-data">
         <input type="file" name="pdf" id="chooseBtn">
         <input type="submit" value="Upload PDF">
     </form>
