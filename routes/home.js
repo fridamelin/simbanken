@@ -4,6 +4,10 @@ let bcrypt = require('bcrypt-nodejs');
 let Activity = require('../models/activity');
 let FilePdf = require('../models/Pdf');
 let upload = require('../upload');
+let pdfDoc = require('html-pdf');
+let fs = require('fs');
+
+
 
 router.route('/')
     .get(function (req, res) {
@@ -110,6 +114,8 @@ router.route('/create')
 
             let nrOfActivities = req.body.exercise.length;
 
+            let html = "<table>";
+
             for (let i = 0; i < nrOfActivities; i++) {
                 let newActivity = new Activity({
                     exercise: req.body.exercise[i],
@@ -121,6 +127,17 @@ router.route('/create')
                     stroke: stroke,
                     passID: passID
                 });
+
+                html += "<tr>";
+
+                html += "<td>" + req.body.exercise[i] + "</td>"
+                html += "<td>" + req.body.description[i] + "</td>"
+                html += "<td>" + req.body.distance[i] + "</td>"
+                html += "<td>" + req.body.rest[i] + "</td>"
+                html += "<td>" + req.body.help[i] + "</td>"
+                html += "<td>" + req.body.total[i] + "</td>"
+
+                html += "</tr>";
 
                 newActivity.save()
                     .then(function () {
@@ -136,7 +153,29 @@ router.route('/create')
                         res.redirect('/login');
                     });
             }
-            res.redirect('/create');
+
+            html += "</table>";
+
+            console.log(html);
+
+
+        pdfDoc.create(html, {format: "Letter"}).toFile('/pass_' + passID + '.pdf', function (err, res) {
+            if (err) return console.log(err);
+            console.log(res);
+        });
+
+
+
+        // let myDoc = new PdfDoc;
+        //
+        //     myDoc.pipe(fs.createWriteStream('node.pdf'));
+        //
+        //     myDoc.font('Times-Roman')
+        //         .fontSize(20);
+        //     .text('Testar lite', 100, 100);
+        //     myDoc.end();
+        //
+        //     res.redirect('/create');
         });
     });
 router.route('/butterfly')
@@ -254,7 +293,22 @@ router.route('/mixed')
     });
 router.route('/teknik')
     .get(function (req, res) {
-        res.render('home/teknik');
+        console.log(req.url);
+
+        FilePdf.find({type: req.url}, function (error, data) {
+            if (error) {
+                console.log(error);
+            }
+            console.log(data);
+            res.render('home/teknik', {pdf: data});
+        });
+    })
+    .post(function (req, res) {
+        if (!req.files)
+            return res.status(400).send('No files were uploaded.');
+
+        let sparad = upload.PDF(req);
+        res.redirect('/teknik');
     });
 router.route('/document')
     .get(function (req, res) {

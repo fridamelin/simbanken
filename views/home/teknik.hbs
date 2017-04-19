@@ -1,5 +1,17 @@
+{{#each pdf}}
+    <div class="divDoc">
+        <a href="/teknik/{{this.path}}" target="_blank"><img src="/test.png" class="pdfIcon"></a>
+        <div class="infoDoc">
+            <p>{{this.path}}</p>
+        </div>
+    </div>
+{{/each}}
+
+
+
+
 <div id="upload">
-    <form action="/teknik" method="post">
+    <form action="/teknik" method="post" enctype="multipart/form-data">
         <input type="file" name="pdf" id="chooseBtn">
         <input type="submit" value="Upload PDF">
     </form>
