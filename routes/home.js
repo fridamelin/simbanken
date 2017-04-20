@@ -331,6 +331,7 @@ router.route('/dokument')
                 console.log(error);
             }
             console.log(data);
+            console.log('hejsan');
             res.render('home/dokument', {pdf: data});
         });
     })
