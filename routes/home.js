@@ -103,7 +103,11 @@ router.route('/login')
     });
 router.route('/create')
     .get(function (req, res) {
-        res.render('home/create');
+        if (req.session.user) {
+            res.render('home/create');
+        } else {
+            res.redirect('/403');
+        }
     })
     .post(function (req, res) {
         console.log(req.body);
@@ -180,128 +184,151 @@ router.route('/create')
     });
 router.route('/butterfly')
     .get(function (req, res) {
-        Activity.find({stroke: "butterfly"}, function (error, data) {
-            // console.log(data);
+        if(req.session.user) {
+            Activity.find({stroke: "butterfly"}, function (error, data) {
+                // console.log(data);
 
-            let counter = 0;
+                let counter = 0;
 
-            let test = [];
-            test[counter] = [];
-            test[counter].push(data[0]);
+                let test = [];
+                test[counter] = [];
+                test[counter].push(data[0]);
 
-            for (let i = 1; i < data.length; i++) {
-                if (data[i].passID !== test[counter][0].passID) {
-                    counter++;
-                    test[counter] = [];
+                for (let i = 1; i < data.length; i++) {
+                    if (data[i].passID !== test[counter][0].passID) {
+                        counter++;
+                        test[counter] = [];
+                    }
+                    test[counter].push(data[i]);
                 }
-                test[counter].push(data[i]);
-            }
-            console.log(test);
-            res.render('home/butterfly', {data: test});
-        });
+                console.log(test);
+                res.render('home/butterfly', {data: test});
+            });
+        }else {
+            res.render('error/403');
+        }
     });
 router.route('/backstroke')
     .get(function (req, res) {
-        Activity.find({stroke: "backstroke"}, function (error, data) {
-            // console.log(data);
+        if(req.session.user) {
+            Activity.find({stroke: "backstroke"}, function (error, data) {
+                // console.log(data);
 
-            let counter = 0;
+                let counter = 0;
 
-            let test = [];
-            test[counter] = [];
-            test[counter].push(data[0]);
+                let test = [];
+                test[counter] = [];
+                test[counter].push(data[0]);
 
-            for (let i = 1; i < data.length; i++) {
-                if (data[i].passID !== test[counter][0].passID) {
-                    counter++;
-                    test[counter] = [];
+                for (let i = 1; i < data.length; i++) {
+                    if (data[i].passID !== test[counter][0].passID) {
+                        counter++;
+                        test[counter] = [];
+                    }
+                    test[counter].push(data[i]);
                 }
-                test[counter].push(data[i]);
-            }
-            console.log(test);
-            res.render('home/backstroke', {data: test});
-        });
+                console.log(test);
+                res.render('home/backstroke', {data: test});
+            });
+        }else {
+            res.render('error/403');
+        }
     });
 router.route('/breaststroke')
     .get(function (req, res) {
-        Activity.find({stroke: "breaststroke"}, function (error, data) {
-            // console.log(data);
+        if(req.session.user) {
+            Activity.find({stroke: "breaststroke"}, function (error, data) {
+                // console.log(data);
 
-            let counter = 0;
+                let counter = 0;
 
-            let test = [];
-            test[counter] = [];
-            test[counter].push(data[0]);
+                let test = [];
+                test[counter] = [];
+                test[counter].push(data[0]);
 
-            for (let i = 1; i < data.length; i++) {
-                if (data[i].passID !== test[counter][0].passID) {
-                    counter++;
-                    test[counter] = [];
+                for (let i = 1; i < data.length; i++) {
+                    if (data[i].passID !== test[counter][0].passID) {
+                        counter++;
+                        test[counter] = [];
+                    }
+
+                    test[counter].push(data[i]);
                 }
-
-                test[counter].push(data[i]);
-            }
-            console.log(test);
-            res.render('home/breaststroke', {data: test});
-        });
+                console.log(test);
+                res.render('home/breaststroke', {data: test});
+            });
+        }else {
+            res.render('error/403');
+        }
     });
 router.route('/crawl')
     .get(function (req, res) {
-        Activity.find({stroke: "crawl"}, function (error, data) {
-            // console.log(data);
+        if(req.session.user) {
+            Activity.find({stroke: "crawl"}, function (error, data) {
+                // console.log(data);
 
-            let counter = 0;
+                let counter = 0;
 
-            let test = [];
-            test[counter] = [];
-            test[counter].push(data[0]);
+                let test = [];
+                test[counter] = [];
+                test[counter].push(data[0]);
 
-            for (let i = 1; i < data.length; i++) {
-                if (data[i].passID !== test[counter][0].passID) {
-                    counter++;
-                    test[counter] = [];
+                for (let i = 1; i < data.length; i++) {
+                    if (data[i].passID !== test[counter][0].passID) {
+                        counter++;
+                        test[counter] = [];
+                    }
+                    test[counter].push(data[i]);
                 }
-                test[counter].push(data[i]);
-            }
-            console.log(test);
-            res.render('home/crawl', {data: test});
-        });
+                console.log(test);
+                res.render('home/crawl', {data: test});
+            });
+        }else {
+            res.render('error/403');
+        }
     });
 router.route('/mixed')
     .get(function (req, res) {
-        Activity.find({stroke: "mixed"}, function (error, data) {
-            // console.log(data);
+        if(req.session.user) {
+            Activity.find({stroke: "mixed"}, function (error, data) {
+                // console.log(data);
 
-            let counter = 0;
+                let counter = 0;
 
-            let test = [];
-            test[counter] = [];
-            test[counter].push(data[0]);
+                let test = [];
+                test[counter] = [];
+                test[counter].push(data[0]);
 
-            for (let i = 1; i < data.length; i++) {
-                if (data[i].passID !== test[counter][0].passID) {
-                    counter++;
-                    test[counter] = [];
+                for (let i = 1; i < data.length; i++) {
+                    if (data[i].passID !== test[counter][0].passID) {
+                        counter++;
+                        test[counter] = [];
+                    }
+
+                    test[counter].push(data[i]);
                 }
-
-                test[counter].push(data[i]);
-            }
-            console.log(test);
-            res.render('home/mixed', {data: test});
-        });
-
+                console.log(test);
+                res.render('home/mixed', {data: test});
+            });
+        }else {
+            res.render('error/403');
+        }
     });
 router.route('/teknik')
     .get(function (req, res) {
-        console.log(req.url);
+        if(req.session.user) {
+            console.log(req.url);
 
-        FilePdf.find({type: req.url}, function (error, data) {
-            if (error) {
-                console.log(error);
-            }
-            console.log(data);
-            res.render('home/teknik', {pdf: data});
-        });
+            FilePdf.find({type: req.url}, function (error, data) {
+                if (error) {
+                    console.log(error);
+                }
+                console.log(data);
+                res.render('home/teknik', {pdf: data});
+            });
+        }else {
+            res.render('error/403');
+        }
     })
     .post(function (req, res) {
         if (!req.files)
@@ -312,28 +339,44 @@ router.route('/teknik')
     });
 router.route('/document')
     .get(function (req, res) {
-        res.render('home/document');
+        if(req.session.user) {
+            res.render('home/document');
+        }else{
+            res.render('error/403');
+        }
     });
 router.route('/kunskapsstege')
     .get(function (req, res) {
-        res.render('home/kunskapsstege');
+        if(req.session.user) {
+            res.render('home/kunskapsstege');
+        }else {
+            res.render('error/403');
+        }
     });
 router.route('/utbildning')
     .get(function (req, res) {
-        res.render('home/utbildning');
+        if(req.session.user) {
+            res.render('home/utbildning');
+        }else{
+            res.render('error/403');
+        }
     });
 router.route('/dokument')
     .get(function (req, res) {
-        console.log(req.url);
+        if(req.session.user) {
+            console.log(req.url);
 
-        FilePdf.find({type: req.url}, function (error, data) {
-            if (error) {
-                console.log(error);
-            }
-            console.log(data);
-            console.log('hejsan');
-            res.render('home/dokument', {pdf: data});
-        });
+            FilePdf.find({type: req.url}, function (error, data) {
+                if (error) {
+                    console.log(error);
+                }
+                console.log(data);
+                console.log('hejsan');
+                res.render('home/dokument', {pdf: data});
+            });
+        }else{
+            res.render('error/403');
+        }
     })
              .post(function (req, res) {
                  if (!req.files)
@@ -344,19 +387,27 @@ router.route('/dokument')
              });
 router.route('/map_protokoll')
     .get(function (req, res) {
-        res.render('home/map_protokoll');
+        if(req.session.user) {
+            res.render('home/map_protokoll');
+        }else {
+            res.render('error/403');
+        }
     });
 router.route('/board_protokoll')
     .get(function (req, res) {
-        console.log(req.url);
+        if(req.session.user) {
+            console.log(req.url);
 
-        FilePdf.find({type: req.url}, function (error, data) {
-            if (error) {
-                console.log(error);
-            }
-            console.log(data);
-            res.render('home/board_protokoll', {pdf: data});
-        });
+            FilePdf.find({type: req.url}, function (error, data) {
+                if (error) {
+                    console.log(error);
+                }
+                console.log(data);
+                res.render('home/board_protokoll', {pdf: data});
+            });
+        }else {
+            res.render('error/403');
+        }
     })
     .post(function (req, res) {
         if (!req.files)
@@ -367,15 +418,19 @@ router.route('/board_protokoll')
     });
 router.route('/protokoll')
     .get(function (req, res) {
-    console.log(req.url);
+        if(req.session.user) {
+            console.log(req.url);
 
-        FilePdf.find({type: req.url}, function (error, data) {
-            if (error) {
-                console.log(error);
-            }
-            console.log(data);
-            res.render('home/protokoll', {pdf: data});
-        });
+            FilePdf.find({type: req.url}, function (error, data) {
+                if (error) {
+                    console.log(error);
+                }
+                console.log(data);
+                res.render('home/protokoll', {pdf: data});
+            });
+        }else {
+            res.render('error/403');
+        }
     })
     .post(function (req, res) {
         if (!req.files)
