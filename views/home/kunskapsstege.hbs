@@ -1,9 +1,17 @@
 <h1>Kunskapsstege</h1>
 
+{{#each pdf}}
+    <div class="divDoc">
+        <a href="/kunskapsstege/{{this.path}}" target="_blank"><img src="/test.png" class="pdfIcon"></a>
+        <div class="infoDoc">
+            <p>{{this.path}}</p>
+        </div>
+    </div>
+{{/each}}
 
 <div id="upload">
-    <form action="/kunskapsstege" method="post">
-        <input type="file" name="pdf" id="chooseBtn">
+    <form action="/kunskapsstege" method="post" enctype="multipart/form-data">
+        <input type="file" name="pdf" id="chooseBtn" accept="file_extension">
         <input type="submit" value="Upload PDF">
     </form>
 </div>

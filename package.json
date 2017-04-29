@@ -24,8 +24,11 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.2",
     "html-pdf": "^2.1.0",
+    "jsreport": "^1.7.0",
     "mongoose": "^4.9.2",
     "path": "^0.12.7",
-    "pdfkit": "^0.8.0"
+    "pdfkit": "^0.8.0",
+    "phantom": "^4.0.2",
+    "phantom-html-to-pdf": "^0.5.2"
   }
 }

@@ -24,7 +24,10 @@ module.exports = {
 
         PdfSchema.save()
             .then(function () {
-                console.log("saved in database!");
+                req.session.flash = {
+                    message: 'Du laddade precis upp ett dokument!'
+                };
+                console.log("Sparad i databasen!");
                 return true;
                 // res.redirect('/create');
             })
@@ -32,7 +35,7 @@ module.exports = {
                 console.log('catch' + err);
                 req.session.flash = {
                     type: 'fail',
-                    message: 'Hey! You need to write something!'
+                    message: 'Hallå! Du måste skriva något!'
                 };
                 return false;
             });

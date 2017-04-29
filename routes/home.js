@@ -6,7 +6,8 @@ let FilePdf = require('../models/Pdf');
 let upload = require('../upload');
 let pdfDoc = require('html-pdf');
 let fs = require('fs');
-
+let jsreport = require('jsreport');
+let pipe = require('pipe');
 
 
 router.route('/')
@@ -27,7 +28,7 @@ router.route('/createMembership')
             if (data) {
                 req.session.flash = {
                     type: 'fail',
-                    message: 'This username already exist, please try again!'
+                    message: 'Användarnamnet är upptaget, vänligen välj ett annat!'
                 };
                 res.redirect('/createMembership');
             }
@@ -39,8 +40,8 @@ router.route('/createMembership')
                     if (data) {
                         req.session.flash = {
                             type: 'fail',
-                            message: 'The username must be at least 4 characters,' +
-                            'and the password 6 characters!'
+                            message: 'Användarnamnet måste vara minst 4 tecken,' +
+                            'och lösenordet 6 tecken!'
                         };
 
                         res.redirect('/createMembership');
@@ -58,7 +59,11 @@ router.route('/403')
     });
 router.route('/strokes')
     .get(function (req, res) {
-        res.render('home/strokes');
+        if (req.session.user) {
+            res.render('home/strokes');
+        }else {
+            res.render('error/403');
+        }
     });
 //Get the loginpage
 router.route('/login')
@@ -90,7 +95,7 @@ router.route('/login')
             else {
                 req.session.flash = {
                     type: 'fail',
-                    message: 'Wrong username or password, please try again!'
+                    message: 'Fel användarnamn eller lösenord, försök igen!'
                 };
                 res.redirect('/login');
             }
@@ -152,7 +157,7 @@ router.route('/create')
                         console.log('catch' + err);
                         req.session.flash = {
                             type: 'fail',
-                            message: 'Hey! You need to write something!'
+                            message: 'Hallå! Du måste skriva någonting!'
                         };
                         res.redirect('/login');
                     });
@@ -162,14 +167,26 @@ router.route('/create')
 
             console.log(html);
 
+            //Ett sätt
+        // conversation({html: html}, function (err, pdf) {
+        //     console.log(pdf.logs);
+        //     pdf.stream.pipe(res)
+        // });
 
-        pdfDoc.create(html, {format: "Letter"}).toFile('/pass_' + passID + '.pdf', function (err, res) {
-            if (err) return console.log(err);
-            console.log(res);
-        });
+            //Ett sätt
+        // pdfDoc.create(html, {format: "Letter"}).toFile('/pass_' + passID + '.pdf', function (err, res) {
+        //     if (err) return console.log(err);
+        //     console.log(res);
+        // });
 
+            //Ett sätt
+        //     jsreport.render(html).then(function(out) {
+        //         out.stream.pipe(res);
+        //     }).catch(function(e) {
+        //         res.end(e.message);
+        //     });
 
-
+            //Ett sätt
         // let myDoc = new PdfDoc;
         //
         //     myDoc.pipe(fs.createWriteStream('node.pdf'));
@@ -178,8 +195,8 @@ router.route('/create')
         //         .fontSize(20);
         //     .text('Testar lite', 100, 100);
         //     myDoc.end();
-        //
-        //     res.redirect('/create');
+
+            res.redirect('/create');
         });
     });
 router.route('/butterfly')
@@ -332,7 +349,7 @@ router.route('/teknik')
     })
     .post(function (req, res) {
         if (!req.files)
-            return res.status(400).send('No files were uploaded.');
+            return res.status(400).send('Ingen fil blev uppladdad.');
 
         let sparad = upload.PDF(req);
         res.redirect('/teknik');
@@ -348,10 +365,23 @@ router.route('/document')
 router.route('/kunskapsstege')
     .get(function (req, res) {
         if(req.session.user) {
-            res.render('home/kunskapsstege');
+            FilePdf.find({type: req.url}, function (error, data) {
+                if (error) {
+                    console.log(error);
+                }
+                console.log(data);
+                res.render('home/kunskapsstege', {pdf: data});
+            });
         }else {
             res.render('error/403');
         }
+    })
+    .post(function (req, res) {
+        if (!req.files)
+            return res.status(400).send('Ingen fil blev uppladdad.');
+
+        let sparad = upload.PDF(req);
+        res.redirect('/kunskapsstege');
     });
 router.route('/utbildning')
     .get(function (req, res) {
