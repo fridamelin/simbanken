@@ -28,7 +28,5 @@
     "mongoose": "^4.9.2",
     "path": "^0.12.7",
     "pdfkit": "^0.8.0",
-    "phantom": "^4.0.2",
-    "phantom-html-to-pdf": "^0.5.2"
   }
 }
