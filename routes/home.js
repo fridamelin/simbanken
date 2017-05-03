@@ -7,7 +7,7 @@ let upload = require('../upload');
 let pdfDoc = require('html-pdf');
 let fs = require('fs');
 let jsreport = require('jsreport');
-let pipe = require('pipe');
+
 
 
 router.route('/')
