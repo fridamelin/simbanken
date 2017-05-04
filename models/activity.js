@@ -8,7 +8,8 @@ let ActivitySchema = new mongoose.Schema({
     help: {type: String, required: true},
     total: {type: Number, required: true},
     stroke: {type: String, required: true},
-    passID: {type: String, required: true}
+    passID: {type: String, required: true},
+  //  username: {type: String, required: true}
 });
 ActivitySchema.path('exercise').validate(function (text) {
     return text.length >=3;

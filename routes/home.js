@@ -134,7 +134,8 @@ router.route('/create')
                     help: req.body.help[i],
                     total: req.body.total[i],
                     stroke: stroke,
-                    passID: passID
+                    passID: passID,
+                    username: req.body.username
                 });
 
                 html += "<tr>";
@@ -152,6 +153,13 @@ router.route('/create')
                     .then(function () {
                         console.log("saved in database!");
                         // res.redirect('/create');
+                        //Här ska det läggas in notifikationer
+
+                        // let notis = 'Ett pass har lagts upp';
+                        // io.emit('Notification',{notification: notis});
+
+                        // console.log(notis);
+
                     })
                     .catch(function (err) {
                         console.log('catch' + err);

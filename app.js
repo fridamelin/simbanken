@@ -49,7 +49,14 @@ app.use(function (req, res, next) {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+//let io = require('socket.io');
+
 app.use('/', require('./routes/home'));
+
+
+
+
+
 
 app.listen(port, function () {
     console.log('heey it works on port:' + port);
