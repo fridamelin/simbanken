@@ -54,5 +54,27 @@ function addField () {
  function removeField() {
      document.getElementById('myTable').deleteRow(-1);
  }
+
+ function NotifyMe() {
+     if(!('Notification' in window)) {
+         alert('This browser does not support notifications');
+     }else if (Notification.permission == 'granted')
+     {
+         var notification = new Notification('Ett nytt pass har lagts upp');
+     } else if (Notification.permission != 'denied')
+     {
+         Notification.requestPermission(function (permission) {
+             if('permission' == 'granted')
+             {
+                 var notification = new Notification('Ett nytt pass har lagts upp');
+               setTimeout(function () {
+                   notification.close();
+               }, 3000);
+
+             }
+         });
+     }
+ }
 module.exports = removeField();
 module.exports = addField();
+module.exports = NotifyMe();
