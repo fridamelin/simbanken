@@ -284,8 +284,9 @@ td{
     display: inline;
 }
 #upload{
+    position: fixed;
     margin-left: 350px;
-    margin-top: 530px ;
+    margin-top: 510px ;
 }
 .PassImg{
     width: 300px;
