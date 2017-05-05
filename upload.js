@@ -25,11 +25,12 @@ module.exports = {
         PdfSchema.save()
             .then(function () {
                 req.session.flash = {
+                    type: 'success',
                     message: 'Du laddade precis upp ett dokument!'
                 };
                 console.log("Sparad i databasen!");
                 return true;
-                // res.redirect('/create');
+
             })
             .catch(function (err) {
                 console.log('catch' + err);

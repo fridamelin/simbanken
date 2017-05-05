@@ -152,13 +152,7 @@ router.route('/create')
                 newActivity.save()
                     .then(function () {
                         console.log("saved in database!");
-                        // res.redirect('/create');
-                        //Här ska det läggas in notifikationer
 
-                        // let notis = 'Ett pass har lagts upp';
-                        // io.emit('Notification',{notification: notis});
-
-                        // console.log(notis);
 
                     })
                     .catch(function (err) {
@@ -175,34 +169,21 @@ router.route('/create')
 
             console.log(html);
 
-            //Ett sätt
-        // conversation({html: html}, function (err, pdf) {
-        //     console.log(pdf.logs);
-        //     pdf.stream.pipe(res)
-        // });
+            //Spara passet som PDF
+        pdfDoc.create(html, {format: "Letter"}).toFile('./public/' + stroke  + '/pass_' + passID + '.pdf', function (err, res) {
+            if (err) return console.log(err);
+            console.log(res);
 
-            //Ett sätt
-        // pdfDoc.create(html, {format: "Letter"}).toFile('/pass_' + passID + '.pdf', function (err, res) {
-        //     if (err) return console.log(err);
-        //     console.log(res);
-        // });
-
-            //Ett sätt
-        //     jsreport.render(html).then(function(out) {
-        //         out.stream.pipe(res);
-        //     }).catch(function(e) {
-        //         res.end(e.message);
-        //     });
-
-            //Ett sätt
-        // let myDoc = new PdfDoc;
-        //
-        //     myDoc.pipe(fs.createWriteStream('node.pdf'));
-        //
-        //     myDoc.font('Times-Roman')
-        //         .fontSize(20);
-        //     .text('Testar lite', 100, 100);
-        //     myDoc.end();
+            let pdf = new FilePdf({
+                path: 'pass_' + passID + '.pdf',
+                owner: req.session.user.username,
+                type: '/' + stroke + '/'
+            });
+            pdf.save(function(err) {
+                if (err) return console.log(err);
+                console.log("saved pdf to database!");
+            });
+        });
 
             res.redirect('/create');
         });
@@ -210,25 +191,36 @@ router.route('/create')
 router.route('/butterfly')
     .get(function (req, res) {
         if(req.session.user) {
-            Activity.find({stroke: "butterfly"}, function (error, data) {
-                // console.log(data);
-
-                let counter = 0;
-
-                let test = [];
-                test[counter] = [];
-                test[counter].push(data[0]);
-
-                for (let i = 1; i < data.length; i++) {
-                    if (data[i].passID !== test[counter][0].passID) {
-                        counter++;
-                        test[counter] = [];
+            if(req.session.user) {
+                FilePdf.find({type: req.url}, function (error, data) {
+                    if (error) {
+                        console.log(error);
                     }
-                    test[counter].push(data[i]);
-                }
-                console.log(test);
-                res.render('home/butterfly', {data: test});
-            });
+                    console.log(data);
+                    res.render('home/butterfly', {pdf: data});
+                });
+            }else {
+                res.render('error/403');
+            }
+            // Activity.find({stroke: "butterfly"}, function (error, data) {
+            //     // console.log(data);
+            //
+            //     let counter = 0;
+            //
+            //     let test = [];
+            //     test[counter] = [];
+            //     test[counter].push(data[0]);
+            //
+            //     for (let i = 1; i < data.length; i++) {
+            //         if (data[i].passID !== test[counter][0].passID) {
+            //             counter++;
+            //             test[counter] = [];
+            //         }
+            //         test[counter].push(data[i]);
+            //     }
+            //     console.log(test);
+            //     res.render('home/butterfly', {data: test});
+            // });
         }else {
             res.render('error/403');
         }

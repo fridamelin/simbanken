@@ -70,7 +70,6 @@ function addField () {
                setTimeout(function () {
                    notification.close();
                }, 3000);
-
              }
          });
      }
