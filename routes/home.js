@@ -184,13 +184,11 @@ router.route('/create')
                 console.log("saved pdf to database!");
             });
         });
-
             res.redirect('/create');
         });
     });
 router.route('/butterfly')
     .get(function (req, res) {
-        if(req.session.user) {
             if(req.session.user) {
                 FilePdf.find({type: req.url}, function (error, data) {
                     if (error) {
@@ -221,115 +219,133 @@ router.route('/butterfly')
             //     console.log(test);
             //     res.render('home/butterfly', {data: test});
             // });
-        }else {
-            res.render('error/403');
-        }
+        // }else {
+        //     res.render('error/403');
+        // }
     });
 router.route('/backstroke')
     .get(function (req, res) {
-        if(req.session.user) {
-            Activity.find({stroke: "backstroke"}, function (error, data) {
-                // console.log(data);
-
-                let counter = 0;
-
-                let test = [];
-                test[counter] = [];
-                test[counter].push(data[0]);
-
-                for (let i = 1; i < data.length; i++) {
-                    if (data[i].passID !== test[counter][0].passID) {
-                        counter++;
-                        test[counter] = [];
+            if(req.session.user) {
+                FilePdf.find({type: req.url}, function (error, data) {
+                    if (error) {
+                        console.log(error);
                     }
-                    test[counter].push(data[i]);
-                }
-                console.log(test);
-                res.render('home/backstroke', {data: test});
-            });
-        }else {
-            res.render('error/403');
-        }
+                    console.log(data);
+                    res.render('home/backstroke', {pdf: data});
+                });
+            }else {
+                res.render('error/403');
+            }
     });
 router.route('/breaststroke')
     .get(function (req, res) {
         if(req.session.user) {
-            Activity.find({stroke: "breaststroke"}, function (error, data) {
-                // console.log(data);
-
-                let counter = 0;
-
-                let test = [];
-                test[counter] = [];
-                test[counter].push(data[0]);
-
-                for (let i = 1; i < data.length; i++) {
-                    if (data[i].passID !== test[counter][0].passID) {
-                        counter++;
-                        test[counter] = [];
-                    }
-
-                    test[counter].push(data[i]);
+            FilePdf.find({type: req.url}, function (error, data) {
+                if (error) {
+                    console.log(error);
                 }
-                console.log(test);
-                res.render('home/breaststroke', {data: test});
+                console.log(data);
+                res.render('home/breaststroke', {pdf: data});
             });
         }else {
             res.render('error/403');
         }
+
+            // Activity.find({stroke: "breaststroke"}, function (error, data) {
+            //     // console.log(data);
+            //
+            //     let counter = 0;
+            //
+            //     let test = [];
+            //     test[counter] = [];
+            //     test[counter].push(data[0]);
+            //
+            //     for (let i = 1; i < data.length; i++) {
+            //         if (data[i].passID !== test[counter][0].passID) {
+            //             counter++;
+            //             test[counter] = [];
+            //         }
+            //
+            //         test[counter].push(data[i]);
+            //     }
+            //     console.log(test);
+            //     res.render('home/breaststroke', {data: test});
+           // });
+
     });
 router.route('/crawl')
     .get(function (req, res) {
         if(req.session.user) {
-            Activity.find({stroke: "crawl"}, function (error, data) {
-                // console.log(data);
-
-                let counter = 0;
-
-                let test = [];
-                test[counter] = [];
-                test[counter].push(data[0]);
-
-                for (let i = 1; i < data.length; i++) {
-                    if (data[i].passID !== test[counter][0].passID) {
-                        counter++;
-                        test[counter] = [];
-                    }
-                    test[counter].push(data[i]);
+            FilePdf.find({type: req.url}, function (error, data) {
+                if (error) {
+                    console.log(error);
                 }
-                console.log(test);
-                res.render('home/crawl', {data: test});
+                console.log(data);
+                res.render('home/crawl', {pdf: data});
             });
         }else {
             res.render('error/403');
         }
+
+        //     Activity.find({stroke: "crawl"}, function (error, data) {
+        //         // console.log(data);
+        //
+        //         let counter = 0;
+        //
+        //         let test = [];
+        //         test[counter] = [];
+        //         test[counter].push(data[0]);
+        //
+        //         for (let i = 1; i < data.length; i++) {
+        //             if (data[i].passID !== test[counter][0].passID) {
+        //                 counter++;
+        //                 test[counter] = [];
+        //             }
+        //             test[counter].push(data[i]);
+        //         }
+        //         console.log(test);
+        //         res.render('home/crawl', {data: test});
+        //     });
+        // }else {
+        //     res.render('error/403');
+        // }
     });
 router.route('/mixed')
     .get(function (req, res) {
         if(req.session.user) {
-            Activity.find({stroke: "mixed"}, function (error, data) {
-                // console.log(data);
-
-                let counter = 0;
-
-                let test = [];
-                test[counter] = [];
-                test[counter].push(data[0]);
-
-                for (let i = 1; i < data.length; i++) {
-                    if (data[i].passID !== test[counter][0].passID) {
-                        counter++;
-                        test[counter] = [];
-                    }
-
-                    test[counter].push(data[i]);
+            FilePdf.find({type: req.url}, function (error, data) {
+                if (error) {
+                    console.log(error);
                 }
-                console.log(test);
-                res.render('home/mixed', {data: test});
+                console.log(data);
+                res.render('home/mixed', {pdf: data});
             });
         }else {
             res.render('error/403');
         }
+            // Activity.find({stroke: "mixed"}, function (error, data) {
+            //     // console.log(data);
+            //
+            //     let counter = 0;
+            //
+            //     let test = [];
+            //     test[counter] = [];
+            //     test[counter].push(data[0]);
+            //
+            //     for (let i = 1; i < data.length; i++) {
+            //         if (data[i].passID !== test[counter][0].passID) {
+            //             counter++;
+            //             test[counter] = [];
+            //         }
+            //
+            //         test[counter].push(data[i]);
+            //     }
+            //     console.log(test);
+            //     res.render('home/mixed', {data: test});
+          //  });
+        // }else {
+        //     res.render('error/403');
+        // }
     });
 router.route('/teknik')
     .get(function (req, res) {
