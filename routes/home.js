@@ -9,7 +9,6 @@ let fs = require('fs');
 let jsreport = require('jsreport');
 
 
-
 router.route('/')
     .get(function (req, res) {
         res.render('home/index');
@@ -123,7 +122,7 @@ router.route('/create')
 
             let nrOfActivities = req.body.exercise.length;
 
-            let html = "<table>";
+            let html = "<table style='border:2px solid black;'>";
 
             for (let i = 0; i < nrOfActivities; i++) {
                 let newActivity = new Activity({
@@ -170,7 +169,20 @@ router.route('/create')
             console.log(html);
 
             //Spara passet som PDF
-        pdfDoc.create(html, {format: "Letter"}).toFile('./public/' + stroke  + '/pass_' + passID + '.pdf', function (err, res) {
+        pdfDoc.create(html,
+            {"format": "Letter",
+            "border": {
+                "top": "2px",
+                "right": "1px",
+                "bottom": "2px",
+                "left": "1.5px"
+            },
+            "header": {
+                "height": "30mm",
+                "contents": '<div style="text-align:center;">Author:Frida</div>'
+            },
+            })
+            .toFile('./public/' + stroke  + '/pass_' + passID + '.pdf', function (err, res) {
             if (err) return console.log(err);
             console.log(res);
 
@@ -200,28 +212,7 @@ router.route('/butterfly')
             }else {
                 res.render('error/403');
             }
-            // Activity.find({stroke: "butterfly"}, function (error, data) {
-            //     // console.log(data);
-            //
-            //     let counter = 0;
-            //
-            //     let test = [];
-            //     test[counter] = [];
-            //     test[counter].push(data[0]);
-            //
-            //     for (let i = 1; i < data.length; i++) {
-            //         if (data[i].passID !== test[counter][0].passID) {
-            //             counter++;
-            //             test[counter] = [];
-            //         }
-            //         test[counter].push(data[i]);
-            //     }
-            //     console.log(test);
-            //     res.render('home/butterfly', {data: test});
-            // });
-        // }else {
-        //     res.render('error/403');
-        // }
+
     });
 router.route('/backstroke')
     .get(function (req, res) {
@@ -251,27 +242,6 @@ router.route('/breaststroke')
             res.render('error/403');
         }
 
-            // Activity.find({stroke: "breaststroke"}, function (error, data) {
-            //     // console.log(data);
-            //
-            //     let counter = 0;
-            //
-            //     let test = [];
-            //     test[counter] = [];
-            //     test[counter].push(data[0]);
-            //
-            //     for (let i = 1; i < data.length; i++) {
-            //         if (data[i].passID !== test[counter][0].passID) {
-            //             counter++;
-            //             test[counter] = [];
-            //         }
-            //
-            //         test[counter].push(data[i]);
-            //     }
-            //     console.log(test);
-            //     res.render('home/breaststroke', {data: test});
-           // });
-
     });
 router.route('/crawl')
     .get(function (req, res) {
@@ -287,28 +257,6 @@ router.route('/crawl')
             res.render('error/403');
         }
 
-        //     Activity.find({stroke: "crawl"}, function (error, data) {
-        //         // console.log(data);
-        //
-        //         let counter = 0;
-        //
-        //         let test = [];
-        //         test[counter] = [];
-        //         test[counter].push(data[0]);
-        //
-        //         for (let i = 1; i < data.length; i++) {
-        //             if (data[i].passID !== test[counter][0].passID) {
-        //                 counter++;
-        //                 test[counter] = [];
-        //             }
-        //             test[counter].push(data[i]);
-        //         }
-        //         console.log(test);
-        //         res.render('home/crawl', {data: test});
-        //     });
-        // }else {
-        //     res.render('error/403');
-        // }
     });
 router.route('/mixed')
     .get(function (req, res) {
@@ -323,29 +271,7 @@ router.route('/mixed')
         }else {
             res.render('error/403');
         }
-            // Activity.find({stroke: "mixed"}, function (error, data) {
-            //     // console.log(data);
-            //
-            //     let counter = 0;
-            //
-            //     let test = [];
-            //     test[counter] = [];
-            //     test[counter].push(data[0]);
-            //
-            //     for (let i = 1; i < data.length; i++) {
-            //         if (data[i].passID !== test[counter][0].passID) {
-            //             counter++;
-            //             test[counter] = [];
-            //         }
-            //
-            //         test[counter].push(data[i]);
-            //     }
-            //     console.log(test);
-            //     res.render('home/mixed', {data: test});
-          //  });
-        // }else {
-        //     res.render('error/403');
-        // }
+
     });
 router.route('/teknik')
     .get(function (req, res) {

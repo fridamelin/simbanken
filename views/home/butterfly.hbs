@@ -1,41 +1,8 @@
 {{#each pdf}}
-    <div class="divDoc">
-        <a href="/butterfly/{{this.path}}" target="_blank"><img src="/butterfly.jpg" class="pdfIcon"></a>
+    <div class="polaroid">
+        <a href="/butterfly/{{this.path}}" target="_blank"><img src="/butterfly.jpg" class="PassImg"></a>
         <div class="infoDoc">
-            <p>{{this.path}}</p>
+            <p>{{this.path}}Skapat av: {{this.owner}}</p>
         </div>
     </div>
 {{/each}}
-
-<!--{{#each data}}-->
-    <!--<div class="polaroid">-->
-        <!--<img src="butterfly.jpg" onclick="HideFunc({{@index}});" class="PassImg">-->
-        <!--<div class="container">-->
-            <!--<p>Lite information här{{user.username}}</p>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="tableClass">-->
-        <!--<table border="1" class="passTable">-->
-            <!--<tbody>-->
-            <!--<tr>-->
-                <!--<th>Övning</th>-->
-                <!--<th>Förklaring</th>-->
-                <!--<th>Distans</th>-->
-                <!--<th>Vila</th>-->
-                <!--<th>Hjälpmedel</th>-->
-                <!--<th>Totalt</th>-->
-            <!--</tr>-->
-            <!--{{#each this}}-->
-                <!--<tr>-->
-                    <!--<td>{{this.exercise}}</td>-->
-                    <!--<td>{{this.description}}</td>-->
-                    <!--<td>{{this.distance}}</td>-->
-                    <!--<td>{{this.rest}}</td>-->
-                    <!--<td>{{this.help}}</td>-->
-                    <!--<td>{{this.total}}</td>-->
-                <!--</tr>-->
-            <!--{{/each}}-->
-            <!--</tbody>-->
-        <!--</table>-->
-    <!--</div>-->
-<!--{{/each}}-->
