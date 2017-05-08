@@ -122,7 +122,16 @@ router.route('/create')
 
             let nrOfActivities = req.body.exercise.length;
 
-            let html = "<table style='border:2px solid black;'>";
+            let html = "<table style='border:1px solid black; background-color:#85bffc; width: 100%;'>";
+
+            html += "<th >" + 'Övning' + "</th>"
+            html += "<th>" + 'Förklaring' + "</th>"
+            html += "<th>" + 'Distans' + "</th>"
+            html += "<th>" + 'Vila' + "</th>"
+            html += "<th>" + 'Hjälpmedel' + "</th>"
+            html += "<th>" + 'Totalt' + "</th>"
+
+
 
             for (let i = 0; i < nrOfActivities; i++) {
                 let newActivity = new Activity({
@@ -139,12 +148,12 @@ router.route('/create')
 
                 html += "<tr>";
 
-                html += "<td>" + req.body.exercise[i] + "</td>"
-                html += "<td>" + req.body.description[i] + "</td>"
-                html += "<td>" + req.body.distance[i] + "</td>"
-                html += "<td>" + req.body.rest[i] + "</td>"
-                html += "<td>" + req.body.help[i] + "</td>"
-                html += "<td>" + req.body.total[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.exercise[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.description[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.distance[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.rest[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.help[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.total[i] + "</td>"
 
                 html += "</tr>";
 
@@ -170,7 +179,8 @@ router.route('/create')
 
             //Spara passet som PDF
         pdfDoc.create(html,
-            {"format": "Letter",
+            {"format": "Letter ",
+                "orientation": "landscape",
             "border": {
                 "top": "2px",
                 "right": "1px",
