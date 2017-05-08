@@ -192,7 +192,7 @@ router.route('/create')
             },
             "header": {
                 "height": "30mm",
-                "contents": "<div style=text-align:center;>" + req.session.user.username + '' + req.body.beskrivning + "</div>"
+                "contents": "<div style=text-align:center;>" + req.body.beskrivning + "</div>"
             },
             })
             .toFile('./public/' + stroke  + '/pass_' + passID + '.pdf', function (err, res) {
@@ -249,8 +249,16 @@ router.route('/backstroke')
                     if (error) {
                         console.log(error);
                     }
-                    console.log(data);
-                    res.render('home/backstroke', {pdf: data});
+                    Description.find({}, function(err, descriptions) {
+                        for (let i = 0; i < descriptions.length; i++) {
+                            for (let j = 0; j < data.length; j++) {
+                                if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
+                                    console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                }
+                            }
+                        }
+                        res.render('home/backstroke', {pdf: data});
+                    });
                 });
             }else {
                 res.render('error/403');
@@ -263,8 +271,16 @@ router.route('/breaststroke')
                 if (error) {
                     console.log(error);
                 }
-                console.log(data);
-                res.render('home/breaststroke', {pdf: data});
+                Description.find({}, function(err, descriptions) {
+                    for (let i = 0; i < descriptions.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
+                                console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                            }
+                        }
+                    }
+                    res.render('home/breaststroke', {pdf: data});
+                });
             });
         }else {
             res.render('error/403');
@@ -278,13 +294,20 @@ router.route('/crawl')
                 if (error) {
                     console.log(error);
                 }
-                console.log(data);
-                res.render('home/crawl', {pdf: data});
+                Description.find({}, function(err, descriptions) {
+                    for (let i = 0; i < descriptions.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
+                                console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                            }
+                        }
+                    }
+                    res.render('home/crawl', {pdf: data});
+                });
             });
         }else {
             res.render('error/403');
         }
-
     });
 router.route('/mixed')
     .get(function (req, res) {
@@ -293,8 +316,16 @@ router.route('/mixed')
                 if (error) {
                     console.log(error);
                 }
-                console.log(data);
-                res.render('home/mixed', {pdf: data});
+                Description.find({}, function(err, descriptions) {
+                    for (let i = 0; i < descriptions.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
+                                console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                            }
+                        }
+                    }
+                    res.render('home/mixed', {pdf: data});
+                });
             });
         }else {
             res.render('error/403');
