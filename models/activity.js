@@ -9,7 +9,6 @@ let ActivitySchema = new mongoose.Schema({
     total: {type: Number, required: true},
     stroke: {type: String, required: true},
     passID: {type: String, required: true},
-  //  username: {type: String, required: true}
 });
 ActivitySchema.path('exercise').validate(function (text) {
     return text.length >=3;

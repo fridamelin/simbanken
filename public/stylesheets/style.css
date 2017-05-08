@@ -323,3 +323,15 @@ td{
 .p_error{
     text-align: center;
 }
+#beskrivning_pass{
+    min-width: 300px;
+    min-height: 70px;
+    max-width: 300px;
+    max-height: 70px;
+    margin-left: calc(50% - 150px);
+    margin-top: 10px;
+
+}
+.infoDoc{
+    text-align: center;
+}

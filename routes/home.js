@@ -2,6 +2,7 @@ let router = require('express').Router();
 let User = require('../models/User');
 let bcrypt = require('bcrypt-nodejs');
 let Activity = require('../models/activity');
+let Description = require('../models/description');
 let FilePdf = require('../models/Pdf');
 let upload = require('../upload');
 let pdfDoc = require('html-pdf');
@@ -122,7 +123,9 @@ router.route('/create')
 
             let nrOfActivities = req.body.exercise.length;
 
-            let html = "<table style='border:1px solid black; background-color:#85bffc; width: 100%;'>";
+
+            let html = "<table style='border:1px solid black; background-color:#85bffc; width:100%;'>";
+
 
             html += "<th >" + 'Övning' + "</th>"
             html += "<th>" + 'Förklaring' + "</th>"
@@ -148,12 +151,12 @@ router.route('/create')
 
                 html += "<tr>";
 
-                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.exercise[i] + "</td>"
-                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.description[i] + "</td>"
-                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.distance[i] + "</td>"
-                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.rest[i] + "</td>"
-                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.help[i] + "</td>"
-                html += "<td style='border:1px solid black; text-align:center;'>" + req.body.total[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;background-color:white;'>" + req.body.exercise[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;background-color:white;'>" + req.body.description[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;background-color:white;'>" + req.body.distance[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;background-color:white;'>" + req.body.rest[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;background-color:white;'>" + req.body.help[i] + "</td>"
+                html += "<td style='border:1px solid black; text-align:center;background-color:white;'>" + req.body.total[i] + "</td>"
 
                 html += "</tr>";
 
@@ -189,7 +192,7 @@ router.route('/create')
             },
             "header": {
                 "height": "30mm",
-                "contents": '<div style="text-align:center;">Author:Frida</div>'
+                "contents": "<div style=text-align:center;>" + req.session.user.username + '' + req.body.beskrivning + "</div>"
             },
             })
             .toFile('./public/' + stroke  + '/pass_' + passID + '.pdf', function (err, res) {
@@ -206,6 +209,14 @@ router.route('/create')
                 console.log("saved pdf to database!");
             });
         });
+            let description = new Description({
+                passID: passID,
+                description: req.body.beskrivning
+            });
+            description.save(function(err) {
+                if (err) return console.log(err);
+                console.log("beskrivning saved!");
+            });
             res.redirect('/create');
         });
     });
@@ -216,13 +227,20 @@ router.route('/butterfly')
                     if (error) {
                         console.log(error);
                     }
-                    console.log(data);
-                    res.render('home/butterfly', {pdf: data});
+                    Description.find({}, function(err, descriptions) {
+                        for (let i = 0; i < descriptions.length; i++) {
+                            for (let j = 0; j < data.length; j++) {
+                                if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
+                                    console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                }
+                            }
+                        }
+                        res.render('home/butterfly', {pdf: data});
+                    });
                 });
             }else {
                 res.render('error/403');
             }
-
     });
 router.route('/backstroke')
     .get(function (req, res) {
