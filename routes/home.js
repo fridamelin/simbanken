@@ -106,6 +106,14 @@ router.route('/login')
             res.redirect('/login');
         });
     });
+router.route('/my_profile')
+    .get(function (req, res) {
+        if (req.session.user){
+            res.render('home/my_profile');
+        }else {
+            res.redirect('/403');
+        }
+    });
 router.route('/create')
     .get(function (req, res) {
         if (req.session.user) {
@@ -211,7 +219,7 @@ router.route('/create')
         });
             let description = new Description({
                 passID: passID,
-                description: req.body.beskrivning
+                description: req.body.beskrivning,
             });
             description.save(function(err) {
                 if (err) return console.log(err);

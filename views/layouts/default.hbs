@@ -13,10 +13,15 @@
 <div id="wrapper">
     <div id="meny">
         {{#if user}}
-
             <a href="/">
                 <img src="/homeicon.png" alt="homeicon" class="homeicon">
             </a>
+        <a href="/my_profile">
+            <img src="/hej.ico" alt="folder" class="my_profile">
+        </a>
+
+
+
             <img src="/tillbaka.png" alt="tillbaka" class="tillbaka" onclick="history.go(-1);">
             <div id="welcomeuser">
                 <p>Inloggad som: {{user.username}}</p>

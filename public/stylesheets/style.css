@@ -338,3 +338,9 @@ td{
 .infoDoc{
     text-align: center;
 }
+.my_profile{
+    height: 50px;
+    width: 50px;
+    float: right;
+    padding-right: 5px;
+}
