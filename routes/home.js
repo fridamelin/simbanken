@@ -231,7 +231,8 @@ router.route('/butterfly')
                         for (let i = 0; i < descriptions.length; i++) {
                             for (let j = 0; j < data.length; j++) {
                                 if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                    console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                   // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                    data[j].description = descriptions[i];
                                 }
                             }
                         }
@@ -253,7 +254,8 @@ router.route('/backstroke')
                         for (let i = 0; i < descriptions.length; i++) {
                             for (let j = 0; j < data.length; j++) {
                                 if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                    console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                    // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                    data[j].description = descriptions[i];
                                 }
                             }
                         }
@@ -275,7 +277,8 @@ router.route('/breaststroke')
                     for (let i = 0; i < descriptions.length; i++) {
                         for (let j = 0; j < data.length; j++) {
                             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                               // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                data[j].description = descriptions[i];
                             }
                         }
                     }
@@ -298,7 +301,8 @@ router.route('/crawl')
                     for (let i = 0; i < descriptions.length; i++) {
                         for (let j = 0; j < data.length; j++) {
                             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                               // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                data[j].description = descriptions[i];
                             }
                         }
                     }
@@ -320,7 +324,8 @@ router.route('/mixed')
                     for (let i = 0; i < descriptions.length; i++) {
                         for (let j = 0; j < data.length; j++) {
                             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                               // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                data[j].description = descriptions[i];
                             }
                         }
                     }

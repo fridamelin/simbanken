@@ -81,6 +81,9 @@ h2{
 #SignupBtn:hover{
     background-color: #85bffc;
 }
+.formCreate{
+    margin-top: 100px;
+}
 .formCreate p{
     text-align: center;
     font-size: large;
@@ -122,7 +125,7 @@ h2{
     background-color: #85bffc;
 }
 .formLogin{
-    margin-top: 120px;
+    margin-top: 100px;
 }
 .formLogin p{
     text-align: center;

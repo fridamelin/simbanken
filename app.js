@@ -7,6 +7,7 @@ let path = require('path');
 let bodyParser = require('body-parser');
 let mongoose = require('./config/mongoose');
 let fileUpload = require('express-fileupload');
+let http = require('http');
 
 let app = express();
 app.use(fileUpload());
@@ -47,14 +48,28 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-//let io = require('socket.io');
-
-app.use('/', require('./routes/home'));
-
-
-
+ app.use(express.static(path.join(__dirname, 'public')));
+// let server = http.createServer(app).listen(port, function () {
+//     console.log('Express started on http://localhost:' + port);
+// });
+//
+// let io = require('socket.io')(server);
+//
+// io.on('connection', function (socket) {
+//     console.log("socket connection!");
+//    socket.emit('connected to socket');
+// });
+//
+// io.on('disconnected', function (socket) {
+//     socket.emit('disconnected from socket');
+// });
+//
+ app.use('/', require('./routes/home'));
+//
+// app.use('/', require('./routes/create')(io));
+//
+//
+//
 
 
 

@@ -56,6 +56,10 @@ function addField () {
  }
 
  function NotifyMe() {
+     // let socket = io();
+     // socket.on('Notification', function (data) {
+     //     console.log(data);
+     // });
      if(!('Notification' in window)) {
          alert('This browser does not support notifications');
      }else if (Notification.permission == 'granted')
