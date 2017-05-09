@@ -109,10 +109,26 @@ router.route('/login')
 router.route('/my_profile')
     .get(function (req, res) {
         if (req.session.user){
-            res.render('home/my_profile');
-        }else {
-            res.redirect('/403');
-        }
+                FilePdf.find({owner: req.session.user.username, type: {'$nin':['/board_protokoll/', '/protokoll/']}}, function (error, data) {
+                    console.log(req.body.stroke);
+                    if (error) {
+                        console.log(error);
+                    }
+                    Description.find({}, function(err, descriptions) {
+                        for (let i = 0; i < descriptions.length; i++) {
+                            for (let j = 0; j < data.length; j++) {
+                                if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
+                                    // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                    data[j].description = descriptions[i];
+                                }
+                            }
+                        }
+                        res.render('home/my_profile', {pdf: data});
+                    });
+                });
+            }else {
+                res.render('error/403');
+            }
     });
 router.route('/create')
     .get(function (req, res) {

@@ -1,1 +1,34 @@
 <h1>Mina pass</h1>
+{{#each pdf}}
+
+   <div class="polaroid">
+        <a href="/my_profile/{{this.path}}" target="_blank"><img src="/butterfly.jpg" class="PassImg"></a>
+        <div class="infoDoc">
+            <p> {{this.description.description}}</p>
+            <p><strong>Skapat av:</strong> {{this.owner}}</p>
+        </div>
+    </div>
+
+
+
+  <!--{{#if type.isCrawl}}
+        <div class="polaroid">
+    <a href="/my_profile/{{this.path}}" target="_blank"><img src="/crawl.jpg" class="PassImg"></a>
+    <div class="infoDoc">
+        <p> {{this.description.description}}</p>
+        <p><strong>Skapat av:</strong> {{this.owner}}</p>
+        </div>
+        </div>
+    {{/if}}
+
+   {{#if type.isButterfly}}
+       <div class="polaroid">
+           <a href="/my_profile/{{this.path}}" target="_blank"><img src="/butterfly.jpg" class="PassImg"></a>
+           <div class="infoDoc">
+
+               <p> {{this.description.description}}</p>
+               <p><strong>Skapat av:</strong> {{this.owner}}</p>
+           </div>
+       </div>
+   {{/if}}-->
+{{/each}}
