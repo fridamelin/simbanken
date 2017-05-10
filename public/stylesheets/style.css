@@ -182,13 +182,16 @@ a{
     width: 50px;
     float: right;
     padding-right: 5px;
+    padding-top: 5px;
 }
 .tillbaka{
     height: 50px;
     width: 50px;
     float: right;
-    margin-right: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
     cursor: pointer;
+
 }
 
 .startP{
@@ -343,4 +346,5 @@ td{
     width: 50px;
     float: right;
     padding-right: 5px;
+    padding-top: 5px;
 }
