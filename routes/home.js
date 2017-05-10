@@ -133,6 +133,8 @@ router.route('/my_profile')
                                 data[i].image = "/breaststroke.jpg";
                             }else if (data[i].type === "/crawl/"){
                                 data[i].image = "/crawl.jpg";
+                            }else if (data[i].type === "/mixed/"){
+                                data[i].image = "/mixednew.jpg";
                             }
                         }
                         res.render('home/my_profile', {pdf: data});
