@@ -134,10 +134,7 @@ router.route('/my_profile')
                             }else if (data[i].type === "/crawl/"){
                                 data[i].image = "/crawl.jpg";
                             }
-
-
                         }
-
                         res.render('home/my_profile', {pdf: data});
                     });
                 });
@@ -164,12 +161,9 @@ router.route('/create')
             }
 
             let stroke = req.body.stroke === "" ? null : req.body.stroke;
-
             let nrOfActivities = req.body.exercise.length;
 
-
             let html = "<table style='border:1px solid black; background-color:#85bffc; width:100%;'>";
-
 
             html += "<th >" + 'Övning' + "</th>"
             html += "<th>" + 'Förklaring' + "</th>"
@@ -177,7 +171,6 @@ router.route('/create')
             html += "<th>" + 'Vila' + "</th>"
             html += "<th>" + 'Hjälpmedel' + "</th>"
             html += "<th>" + 'Totalt' + "</th>"
-
 
             for (let i = 0; i < nrOfActivities; i++) {
                 let newActivity = new Activity({
@@ -206,7 +199,11 @@ router.route('/create')
                 newActivity.save()
                     .then(function () {
                         console.log("saved in database!");
-
+                        //FUNKAR INTE, FIXA!
+                            req.session.flash = {
+                                type: 'success',
+                                message: 'Du laddade precis upp ett pass!'
+                            };
 
                     })
                     .catch(function (err) {

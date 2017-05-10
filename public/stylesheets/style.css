@@ -8,6 +8,12 @@
     font-size: x-large;
     margin-top: 5px;
 }
+.success{
+    text-align: center;
+    font-style: italic;
+    font-size: x-large;
+    margin-top: 5px;
+}
 body{
     background-image: url("../water-1018808.jpg");
     background-size: cover;
