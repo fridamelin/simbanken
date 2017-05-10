@@ -159,7 +159,6 @@ router.route('/create')
             html += "<th>" + 'Totalt' + "</th>"
 
 
-
             for (let i = 0; i < nrOfActivities; i++) {
                 let newActivity = new Activity({
                     exercise: req.body.exercise[i],
