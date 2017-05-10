@@ -123,6 +123,21 @@ router.route('/my_profile')
                                 }
                             }
                         }
+
+                        for (let i = 0; i < data.length; i++) {
+                            if (data[i].type === "/butterfly/") {
+                                data[i].image = "/butterfly.jpg";
+                            } else if (data[i].type === "/backstroke/"){
+                                data[i].image = "/backstroke.jpg";
+                            } else if (data[i].type === "/breaststroke/"){
+                                data[i].image = "/breaststroke.jpg";
+                            }else if (data[i].type === "/crawl/"){
+                                data[i].image = "/crawl.jpg";
+                            }
+
+
+                        }
+
                         res.render('home/my_profile', {pdf: data});
                     });
                 });
@@ -141,7 +156,12 @@ router.route('/create')
     .post(function (req, res) {
         console.log(req.body);
         Activity.findOne().sort('-passID').exec((err, item) => {
-            let passID = Number.parseInt(item.passID) + 1;
+            let passID;
+            if (item === null) {
+                passID = 0;
+            } else {
+                passID = Number.parseInt(item.passID) + 1;
+            }
 
             let stroke = req.body.stroke === "" ? null : req.body.stroke;
 
