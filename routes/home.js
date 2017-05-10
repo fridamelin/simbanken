@@ -109,7 +109,7 @@ router.route('/login')
 router.route('/my_profile')
     .get(function (req, res) {
         if (req.session.user){
-                FilePdf.find({owner: req.session.user.username, type: {'$nin':['/board_protokoll/', '/protokoll/']}}, function (error, data) {
+                FilePdf.find({owner: req.session.user.username, type: {'$nin':['/board_protokoll/', '/protokoll/', '/teknik/', '/kunskapsstege/', '/dokument/' ]}}, function (error, data) {
                     console.log(req.body.stroke);
                     if (error) {
                         console.log(error);
