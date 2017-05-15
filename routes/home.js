@@ -7,17 +7,19 @@ let FilePdf = require('../models/Pdf');
 let upload = require('../upload');
 let pdfDoc = require('html-pdf');
 let fs = require('fs');
-let jsreport = require('jsreport');
+//let jsreport = require('jsreport');
 
 
 router.route('/')
     .get(function (req, res) {
         res.render('home/index');
     });
- router.route('/createMembership')
-     .get(function (req, res) {
-         res.render('home/createMembership');
-     });
+router.route('/createMembership')
+    .get(function (req, res) {
+        res.render('home/createMembership');
+    });
+
+//Kommer det till en ny tränare eller nya styrelsemedlemmar kan man ta bort kommentarerna och använda koden då den fungerar som den ska.
 
 //     .get(function (req, res) {
 //         res.render('home/createMembership');
@@ -65,7 +67,7 @@ router.route('/strokes')
     .get(function (req, res) {
         if (req.session.user) {
             res.render('home/strokes');
-        }else {
+        } else {
             res.render('error/403');
         }
     });
@@ -89,21 +91,21 @@ router.route('/login')
         query.exec().then(function (data) {
             console.log(data);
 
-                bcrypt.compare(req.body.password, data[0].password, function (error, result) {
+            bcrypt.compare(req.body.password, data[0].password, function (error, result) {
 
-                    if (result) {
-                        req.session.user = data[0];
-                        //res.locals.user = req.session.user;
-                        res.redirect('/');
-                    }
-            else {
-                req.session.flash = {
-                    type: 'fail',
-                    message: 'Fel användarnamn eller lösenord, försök igen!'
-                };
-                res.redirect('/login');
-            }
-                });
+                if (result) {
+                    req.session.user = data[0];
+                    //res.locals.user = req.session.user;
+                    res.redirect('/');
+                }
+                else {
+                    req.session.flash = {
+                        type: 'fail',
+                        message: 'Fel användarnamn eller lösenord, försök igen!'
+                    };
+                    res.redirect('/login');
+                }
+            });
         }).catch(function (err) {
             // Show the error
             console.log("error: " + err);
@@ -112,41 +114,45 @@ router.route('/login')
     });
 router.route('/my_profile')
     .get(function (req, res) {
-        if (req.session.user){
-                FilePdf.find({owner: req.session.user.username, type: {'$nin':['/board_protokoll/', '/protokoll/', '/teknik/', '/kunskapsstege/', '/dokument/' ]}}, function (error, data) {
-                    console.log(req.body.stroke);
-                    if (error) {
-                        console.log(error);
-                    }
-                    Description.find({}, function(err, descriptions) {
-                        for (let i = 0; i < descriptions.length; i++) {
-                            for (let j = 0; j < data.length; j++) {
-                                if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                    // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
-                                    data[j].description = descriptions[i];
-                                }
-                            }
-                        }
+        if (req.session.user) {
+            FilePdf.find({
+                owner: req.session.user.username,
+                type: {'$nin': ['/board_protokoll/', '/protokoll/', '/teknik/', '/kunskapsstege/', '/dokument/']}
+            }, function (error, data) {
+                console.log(req.body.stroke);
+                if (error) {
+                    console.log(error);
+                }
+                // Description.find({}, function(err, descriptions) {
+                //
+                //     for (let i = 0; i < descriptions.length; i++) {
+                //         for (let j = 0; j < data.length; j++) {
+                //             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
+                //                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                //                 data[j].description = descriptions[i];
+                //             }
+                //         }
+                //     }
 
-                        for (let i = 0; i < data.length; i++) {
-                            if (data[i].type === "/butterfly/") {
-                                data[i].image = "/butterfly.jpg";
-                            } else if (data[i].type === "/backstroke/"){
-                                data[i].image = "/backstroke.jpg";
-                            } else if (data[i].type === "/breaststroke/"){
-                                data[i].image = "/breaststroke.jpg";
-                            }else if (data[i].type === "/crawl/"){
-                                data[i].image = "/crawl.jpg";
-                            }else if (data[i].type === "/mixed/"){
-                                data[i].image = "/mixednew.jpg";
-                            }
-                        }
-                        res.render('home/my_profile', {pdf: data});
-                    });
-                });
-            }else {
-                res.render('error/403');
-            }
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].type === "/butterfly/") {
+                        data[i].image = "/butterfly.jpg";
+                    } else if (data[i].type === "/backstroke/") {
+                        data[i].image = "/backstroke.jpg";
+                    } else if (data[i].type === "/breaststroke/") {
+                        data[i].image = "/breaststroke.jpg";
+                    } else if (data[i].type === "/crawl/") {
+                        data[i].image = "/crawl.jpg";
+                    } else if (data[i].type === "/mixed/") {
+                        data[i].image = "/mixednew.jpg";
+                    }
+                }
+                res.render('home/my_profile', {pdf: data});
+                //});
+            });
+        } else {
+            res.render('error/403');
+        }
     });
 router.route('/create')
     .get(function (req, res) {
@@ -158,12 +164,13 @@ router.route('/create')
     })
     .post(function (req, res) {
         console.log(req.body);
-        Activity.findOne().sort('-passID').exec((err, item) => {
+        Activity.findOne().sort({passID: -1}).exec((err, item) => {
             let passID;
+            console.log(item);
             if (item === null) {
                 passID = 0;
             } else {
-                passID = Number.parseInt(item.passID) + 1;
+                passID = item.passID + 1;
             }
 
             let stroke = req.body.stroke === "" ? null : req.body.stroke;
@@ -181,12 +188,13 @@ router.route('/create')
             for (let i = 0; i < nrOfActivities; i++) {
                 let newActivity = new Activity({
                     exercise: req.body.exercise[i],
-                    description: req.body.description[i],
+                    explanation: req.body.description[i],
+                    //description: req.body.beskrivning,
                     distance: req.body.distance[i],
                     rest: req.body.rest[i],
                     help: req.body.help[i],
                     total: req.body.total[i],
-                    stroke: stroke,
+                    //stroke: stroke,
                     passID: passID,
                     username: req.body.username
                 });
@@ -202,14 +210,15 @@ router.route('/create')
 
                 html += "</tr>";
 
+
+                // req.session.flash = {
+                //     type: 'success',
+                //     message: 'Du laddade precis upp ett pass!'
+                // };
                 newActivity.save()
+
                     .then(function () {
                         console.log("saved in database!");
-                        //FUNKAR INTE, FIXA!
-                            req.session.flash = {
-                                type: 'success',
-                                message: 'Du laddade precis upp ett pass!'
-                            };
 
                     })
                     .catch(function (err) {
@@ -218,112 +227,114 @@ router.route('/create')
                             type: 'fail',
                             message: 'Hallå! Du måste skriva någonting!'
                         };
-                        res.redirect('/login');
+                        res.redirect('/create');
                     });
             }
 
             html += "</table>";
 
-            console.log(html);
+            //console.log(html);
 
             //Spara passet som PDF
-        pdfDoc.create(html,
-            {"format": "Letter ",
-                "orientation": "landscape",
-            "border": {
-                "top": "2px",
-                "right": "1px",
-                "bottom": "2px",
-                "left": "1.5px"
-            },
-            "header": {
-                "height": "30mm",
-                "contents": "<div style=text-align:center;>" + req.body.beskrivning + "</div>"
-            },
-            })
-            .toFile('./public/' + stroke  + '/pass_' + passID + '.pdf', function (err, res) {
-            if (err) return console.log(err);
-            console.log(res);
+            pdfDoc.create(html,
+                {
+                    "format": "Letter ",
+                    "orientation": "landscape",
+                    "border": {
+                        "top": "2px",
+                        "right": "1px",
+                        "bottom": "2px",
+                        "left": "1.5px"
+                    },
+                    "header": {
+                        "height": "30mm",
+                        "contents": "<div style=text-align:center;>" + req.body.beskrivning + "</div>"
+                    },
+                })
+                .toFile('./public/' + stroke + '/pass_' + passID + '.pdf', function (err, res) {
+                    if (err) return console.log(err);
 
-            let pdf = new FilePdf({
-                path: 'pass_' + passID + '.pdf',
-                owner: req.session.user.username,
-                type: '/' + stroke + '/'
-            });
-            pdf.save(function(err) {
-                if (err) return console.log(err);
-                console.log("saved pdf to database!");
-            });
-        });
-            let description = new Description({
-                passID: passID,
-                description: req.body.beskrivning,
-            });
-            description.save(function(err) {
-                if (err) return console.log(err);
-                console.log("beskrivning saved!");
-            });
+                    let pdf = new FilePdf({
+                        path: 'pass_' + passID + '.pdf',
+                        owner: req.session.user.username,
+                        type: '/' + stroke + '/',
+                        description: req.body.beskrivning,
+                        //stroke: stroke
+                    });
+                    pdf.save(function (err) {
+                        if (err) return console.log(err);
+                        console.log("saved pdf to database!");
+                    });
+                });
+            // let description = new Description({
+            //     passID: passID,
+            //     description: req.body.beskrivning,
+            // });
+            // description.save(function (err) {
+            //     if (err) return console.log(err);
+            //     console.log("beskrivning saved!");
+            // });
             res.redirect('/create');
         });
     });
 router.route('/butterfly')
     .get(function (req, res) {
-            if(req.session.user) {
-                FilePdf.find({type: req.url}, function (error, data) {
-                    if (error) {
-                        console.log(error);
-                    }
-                    Description.find({}, function(err, descriptions) {
-                        for (let i = 0; i < descriptions.length; i++) {
-                            for (let j = 0; j < data.length; j++) {
-                                if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                   // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
-                                    data[j].description = descriptions[i];
-                                }
-                            }
-                        }
-                        res.render('home/butterfly', {pdf: data});
-                    });
-                });
-            }else {
-                res.render('error/403');
-            }
-    });
-router.route('/backstroke')
-    .get(function (req, res) {
-            if(req.session.user) {
-                FilePdf.find({type: req.url}, function (error, data) {
-                    if (error) {
-                        console.log(error);
-                    }
-                    Description.find({}, function(err, descriptions) {
-                        for (let i = 0; i < descriptions.length; i++) {
-                            for (let j = 0; j < data.length; j++) {
-                                if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                    // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
-                                    data[j].description = descriptions[i];
-                                }
-                            }
-                        }
-                        res.render('home/backstroke', {pdf: data});
-                    });
-                });
-            }else {
-                res.render('error/403');
-            }
-    });
-router.route('/breaststroke')
-    .get(function (req, res) {
-        if(req.session.user) {
+        if (req.session.user) {
             FilePdf.find({type: req.url}, function (error, data) {
                 if (error) {
                     console.log(error);
                 }
-                Description.find({}, function(err, descriptions) {
+                Description.find({}, function (err, descriptions) {
                     for (let i = 0; i < descriptions.length; i++) {
                         for (let j = 0; j < data.length; j++) {
                             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                               // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                data[j].description = descriptions[i];
+                            }
+                        }
+                    }
+                    res.render('home/butterfly', {pdf: data});
+                });
+            });
+        } else {
+            res.render('error/403');
+        }
+    });
+router.route('/backstroke')
+    .get(function (req, res) {
+        if (req.session.user) {
+            FilePdf.find({type: req.url}, function (error, data) {
+                if (error) {
+                    console.log(error);
+                }
+                Description.find({}, function (err, descriptions) {
+                    for (let i = 0; i < descriptions.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
+                                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                data[j].description = descriptions[i];
+                            }
+                        }
+                    }
+                    res.render('home/backstroke', {pdf: data});
+                });
+            });
+        } else {
+            res.render('error/403');
+        }
+    });
+router.route('/breaststroke')
+    .get(function (req, res) {
+        if (req.session.user) {
+            FilePdf.find({type: req.url}, function (error, data) {
+                if (error) {
+                    console.log(error);
+                }
+                Description.find({}, function (err, descriptions) {
+                    for (let i = 0; i < descriptions.length; i++) {
+                        for (let j = 0; j < data.length; j++) {
+                            if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
+                                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
                                 data[j].description = descriptions[i];
                             }
                         }
@@ -331,23 +342,23 @@ router.route('/breaststroke')
                     res.render('home/breaststroke', {pdf: data});
                 });
             });
-        }else {
+        } else {
             res.render('error/403');
         }
 
     });
 router.route('/crawl')
     .get(function (req, res) {
-        if(req.session.user) {
+        if (req.session.user) {
             FilePdf.find({type: req.url}, function (error, data) {
                 if (error) {
                     console.log(error);
                 }
-                Description.find({}, function(err, descriptions) {
+                Description.find({}, function (err, descriptions) {
                     for (let i = 0; i < descriptions.length; i++) {
                         for (let j = 0; j < data.length; j++) {
                             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                               // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
                                 data[j].description = descriptions[i];
                             }
                         }
@@ -355,22 +366,22 @@ router.route('/crawl')
                     res.render('home/crawl', {pdf: data});
                 });
             });
-        }else {
+        } else {
             res.render('error/403');
         }
     });
 router.route('/mixed')
     .get(function (req, res) {
-        if(req.session.user) {
+        if (req.session.user) {
             FilePdf.find({type: req.url}, function (error, data) {
                 if (error) {
                     console.log(error);
                 }
-                Description.find({}, function(err, descriptions) {
+                Description.find({}, function (err, descriptions) {
                     for (let i = 0; i < descriptions.length; i++) {
                         for (let j = 0; j < data.length; j++) {
                             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                               // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
+                                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
                                 data[j].description = descriptions[i];
                             }
                         }
@@ -378,14 +389,14 @@ router.route('/mixed')
                     res.render('home/mixed', {pdf: data});
                 });
             });
-        }else {
+        } else {
             res.render('error/403');
         }
 
     });
 router.route('/teknik')
     .get(function (req, res) {
-        if(req.session.user) {
+        if (req.session.user) {
             console.log(req.url);
 
             FilePdf.find({type: req.url}, function (error, data) {
@@ -395,7 +406,7 @@ router.route('/teknik')
                 console.log(data);
                 res.render('home/teknik', {pdf: data});
             });
-        }else {
+        } else {
             res.render('error/403');
         }
     })
@@ -408,15 +419,15 @@ router.route('/teknik')
     });
 router.route('/document')
     .get(function (req, res) {
-        if(req.session.user) {
+        if (req.session.user) {
             res.render('home/document');
-        }else{
+        } else {
             res.render('error/403');
         }
     });
 router.route('/kunskapsstege')
     .get(function (req, res) {
-        if(req.session.user) {
+        if (req.session.user) {
             FilePdf.find({type: req.url}, function (error, data) {
                 if (error) {
                     console.log(error);
@@ -424,7 +435,7 @@ router.route('/kunskapsstege')
                 console.log(data);
                 res.render('home/kunskapsstege', {pdf: data});
             });
-        }else {
+        } else {
             res.render('error/403');
         }
     })
@@ -437,15 +448,15 @@ router.route('/kunskapsstege')
     });
 router.route('/utbildning')
     .get(function (req, res) {
-        if(req.session.user) {
+        if (req.session.user) {
             res.render('home/utbildning');
-        }else{
+        } else {
             res.render('error/403');
         }
     });
 router.route('/dokument')
     .get(function (req, res) {
-        if(req.session.user) {
+        if (req.session.user) {
             console.log(req.url);
 
             FilePdf.find({type: req.url}, function (error, data) {
@@ -456,28 +467,28 @@ router.route('/dokument')
                 console.log('hejsan');
                 res.render('home/dokument', {pdf: data});
             });
-        }else{
+        } else {
             res.render('error/403');
         }
     })
-             .post(function (req, res) {
-                 if (!req.files)
-                     return res.status(400).send('No files were uploaded.');
+    .post(function (req, res) {
+        if (!req.files)
+            return res.status(400).send('No files were uploaded.');
 
-                 let sparad = upload.PDF(req);
-                 res.redirect('/dokument');
-             });
+        let sparad = upload.PDF(req);
+        res.redirect('/dokument');
+    });
 router.route('/map_protokoll')
     .get(function (req, res) {
-        if(req.session.user) {
+        if (req.session.user) {
             res.render('home/map_protokoll');
-        }else {
+        } else {
             res.render('error/403');
         }
     });
 router.route('/board_protokoll')
     .get(function (req, res) {
-        if(req.session.user) {
+        if (req.session.user) {
             console.log(req.url);
 
             FilePdf.find({type: req.url}, function (error, data) {
@@ -487,7 +498,7 @@ router.route('/board_protokoll')
                 console.log(data);
                 res.render('home/board_protokoll', {pdf: data});
             });
-        }else {
+        } else {
             res.render('error/403');
         }
     })
@@ -500,7 +511,7 @@ router.route('/board_protokoll')
     });
 router.route('/protokoll')
     .get(function (req, res) {
-        if(req.session.user) {
+        if (req.session.user) {
             console.log(req.url);
 
             FilePdf.find({type: req.url}, function (error, data) {
@@ -510,7 +521,7 @@ router.route('/protokoll')
                 console.log(data);
                 res.render('home/protokoll', {pdf: data});
             });
-        }else {
+        } else {
             res.render('error/403');
         }
     })
@@ -520,20 +531,20 @@ router.route('/protokoll')
 
         let sparad = upload.PDF(req);
 
-            res.redirect('/protokoll');
-        });
+        res.redirect('/protokoll');
+    });
 router.route('/delete/:id')
     .get(function (req, res) {
-        if (req.session.user){
-            res.render('home/delete', {id:req.params.id});
-        }else {
+        if (req.session.user) {
+            res.render('home/delete', {id: req.params.id});
+        } else {
             res.redirect('/403');
         }
     })
     .post(function (req, res) {
-        if (req.session.user){
-            FilePdf.findOneAndRemove({_id:req.params.id}, function (error) {
-                if (error){
+        if (req.session.user) {
+            FilePdf.findOneAndRemove({_id: req.params.id}, function (error) {
+                if (error) {
                     throw new Error('Något gick snett..');
                 }
                 req.session.flash = {
@@ -542,7 +553,7 @@ router.route('/delete/:id')
                 };
                 res.redirect('/my_profile');
             });
-        }else {
+        } else {
             res.redirect('/403');
         }
     });

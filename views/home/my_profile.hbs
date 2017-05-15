@@ -4,9 +4,9 @@
    <div class="polaroid">
        <a href="{{this.type}}/{{this.path}}" target="_blank"><img src="{{this.image}}" class="PassImg"></a>
        <div class="infoDoc">
-           <p> {{this.description.description}}</p>
+           <p> {{this.description}}</p>
            <p><strong>Skapat av:</strong> {{this.owner}}</p>
-           <a href="/delete/{{id}}">Ta bort passet</a>
+           <a href="/delete/{{this.id}}">Ta bort passet</a>
        </div>
     </div>
 {{/each}}

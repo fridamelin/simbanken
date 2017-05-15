@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 
 let DescriptionSchema = new mongoose.Schema ({
-    passID: {type: String},
+    passID: {type: Number},
     description: {type: String}
 });
 
