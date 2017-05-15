@@ -343,7 +343,6 @@ td{
     max-height: 70px;
     margin-left: calc(50% - 150px);
     margin-top: 10px;
-
 }
 .infoDoc{
     text-align: center;
@@ -354,4 +353,28 @@ td{
     float: right;
     padding-right: 5px;
     padding-top: 5px;
+}
+#deletePass{
+    width: 180px;
+    height: 70px;
+    margin-left: calc(50% - 95px);
+    margin-top: 150px;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+}
+#noDelete{
+    width: 180px;
+    height: 70px;
+    margin-left: calc(50% - 95px);
+    margin-top: 20px;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+}
+#deletePass:hover{
+    background-color: #85bffc;
+}
+#noDelete:hover{
+    background-color: #85bffc;
 }

@@ -518,8 +518,30 @@ router.route('/protokoll')
 
             res.redirect('/protokoll');
         });
-
-
+router.route('/delete/:id')
+    .get(function (req, res) {
+        if (req.session.user){
+            res.render('home/delete', {id:req.params.id});
+        }else {
+            res.redirect('/403');
+        }
+    })
+    .post(function (req, res) {
+        if (req.session.user){
+            FilePdf.findOneAndRemove({_id:req.params.id}, function (error) {
+                if (error){
+                    throw new Error('Något gick snett..');
+                }
+                req.session.flash = {
+                    type: 'success',
+                    message: 'Passet togs bort!'
+                };
+                res.redirect('/my_profile');
+            });
+        }else {
+            res.redirect('/403');
+        }
+    });
 
 
 //Get the logout page

@@ -1,11 +1,12 @@
 <h1>Mina pass</h1>
-{{#each pdf}}
 
+{{#each pdf}}
    <div class="polaroid">
        <a href="{{this.type}}/{{this.path}}" target="_blank"><img src="{{this.image}}" class="PassImg"></a>
        <div class="infoDoc">
            <p> {{this.description.description}}</p>
            <p><strong>Skapat av:</strong> {{this.owner}}</p>
+           <a href="/delete/{{id}}">Delete</a>
        </div>
     </div>
 {{/each}}
