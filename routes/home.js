@@ -216,10 +216,8 @@ router.route('/create')
                 //     message: 'Du laddade precis upp ett pass!'
                 // };
                 newActivity.save()
-
                     .then(function () {
                         console.log("saved in database!");
-
                     })
                     .catch(function (err) {
                         console.log('catch' + err);
@@ -227,7 +225,8 @@ router.route('/create')
                             type: 'fail',
                             message: 'Hallå! Du måste skriva någonting!'
                         };
-                        res.redirect('/create');
+
+                        return res.redirect('/create');
                     });
             }
 
