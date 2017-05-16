@@ -25,15 +25,15 @@ app.engine('.hbs', exhbs({
 }));
 app.set('view engine', '.hbs');
 
-//session, took from a lecture
+//Session - tog från en föreläsningsslide
 app.use(session({
-    name:   "theserversession",  // Don't use default session cookie name.
-    secret: "K7smsx9MsEasad89wEzVp5EeCep5s", // should be kept secret
-    saveUninitialized: false, // save/not-save a created but not modified session
-    resave: false, // resave even if a request is not changing the session
+    name:   "theserversession",
+    secret: "K7smsx9MsEasad89wEzVp5EeCep5s",
+    saveUninitialized: false,
+    resave: false,
     cookie: {
-        httpOnly: true, // dont allow client script messing with the cookie
-        maxAge: 1000 * 60 * 60 * 24 // Millisecond
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24
     }
 }));
 
@@ -50,29 +50,8 @@ app.use(function (req, res, next) {
 });
 
  app.use(express.static(path.join(__dirname, 'public')));
-// let server = http.createServer(app).listen(port, function () {
-//     console.log('Express started on http://localhost:' + port);
-// });
-//
-// let io = require('socket.io')(server);
-//
-// io.on('connection', function (socket) {
-//     console.log("socket connection!");
-//    socket.emit('connected to socket');
-// });
-//
-// io.on('disconnected', function (socket) {
-//     socket.emit('disconnected from socket');
-// });
-//
+
  app.use('/', require('./routes/home'));
-//
-// app.use('/', require('./routes/create')(io));
-//
-//
-//
-
-
 
 app.listen(port, function () {
     console.log('heey it works on port:' + port);

@@ -7,7 +7,6 @@ let FilePdf = require('../models/Pdf');
 let upload = require('../upload');
 let pdfDoc = require('html-pdf');
 let fs = require('fs');
-//let jsreport = require('jsreport');
 
 
 router.route('/')
@@ -71,7 +70,7 @@ router.route('/strokes')
             res.render('error/403');
         }
     });
-//Get the loginpage
+//Hämta inloggssidan
 router.route('/login')
     .get(function (req, res) {
         User.find({}, function (error, data) {
@@ -112,6 +111,8 @@ router.route('/login')
             res.redirect('/login');
         });
     });
+
+//Hämta de passen som den inloggade har skapat
 router.route('/my_profile')
     .get(function (req, res) {
         if (req.session.user) {
@@ -123,17 +124,7 @@ router.route('/my_profile')
                 if (error) {
                     console.log(error);
                 }
-                // Description.find({}, function(err, descriptions) {
-                //
-                //     for (let i = 0; i < descriptions.length; i++) {
-                //         for (let j = 0; j < data.length; j++) {
-                //             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                //                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
-                //                 data[j].description = descriptions[i];
-                //             }
-                //         }
-                //     }
-
+                //Kolla vilken typ av simsätt det är och anpassa bilden efter det.
                 for (let i = 0; i < data.length; i++) {
                     if (data[i].type === "/butterfly/") {
                         data[i].image = "/butterfly.jpg";
@@ -154,6 +145,7 @@ router.route('/my_profile')
             res.render('error/403');
         }
     });
+//Hämta skapa-pass sidan
 router.route('/create')
     .get(function (req, res) {
         if (req.session.user) {
@@ -178,6 +170,7 @@ router.route('/create')
 
             let html = "<table style='border:1px solid black; background-color:#85bffc; width:100%;'>";
 
+            //Skapa en tabell med inputens värden
             html += "<th >" + 'Övning' + "</th>"
             html += "<th>" + 'Förklaring' + "</th>"
             html += "<th>" + 'Distans' + "</th>"
@@ -232,8 +225,6 @@ router.route('/create')
 
             html += "</table>";
 
-            //console.log(html);
-
             //Spara passet som PDF
             pdfDoc.create(html,
                 {
@@ -265,17 +256,11 @@ router.route('/create')
                         console.log("saved pdf to database!");
                     });
                 });
-            // let description = new Description({
-            //     passID: passID,
-            //     description: req.body.beskrivning,
-            // });
-            // description.save(function (err) {
-            //     if (err) return console.log(err);
-            //     console.log("beskrivning saved!");
-            // });
+
             res.redirect('/create');
         });
     });
+//Hämta fjärilssidan
 router.route('/butterfly')
     .get(function (req, res) {
         if (req.session.user) {
@@ -283,11 +268,11 @@ router.route('/butterfly')
                 if (error) {
                     console.log(error);
                 }
+                //Hitta beskrivningen till de passen som finns i ryggsim
                 Description.find({}, function (err, descriptions) {
                     for (let i = 0; i < descriptions.length; i++) {
                         for (let j = 0; j < data.length; j++) {
                             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
                                 data[j].description = descriptions[i];
                             }
                         }
@@ -299,6 +284,7 @@ router.route('/butterfly')
             res.render('error/403');
         }
     });
+//Hämta ryggsimssidan
 router.route('/backstroke')
     .get(function (req, res) {
         if (req.session.user) {
@@ -306,11 +292,11 @@ router.route('/backstroke')
                 if (error) {
                     console.log(error);
                 }
+                //Hitta beskrivningen till de passen som finns i ryggsim
                 Description.find({}, function (err, descriptions) {
                     for (let i = 0; i < descriptions.length; i++) {
                         for (let j = 0; j < data.length; j++) {
                             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
                                 data[j].description = descriptions[i];
                             }
                         }
@@ -322,6 +308,7 @@ router.route('/backstroke')
             res.render('error/403');
         }
     });
+//Hämta bröstsimssidan
 router.route('/breaststroke')
     .get(function (req, res) {
         if (req.session.user) {
@@ -329,11 +316,11 @@ router.route('/breaststroke')
                 if (error) {
                     console.log(error);
                 }
+                //Hitta beskrivningen till de passen som finns i bröstsim
                 Description.find({}, function (err, descriptions) {
                     for (let i = 0; i < descriptions.length; i++) {
                         for (let j = 0; j < data.length; j++) {
                             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
                                 data[j].description = descriptions[i];
                             }
                         }
@@ -346,6 +333,7 @@ router.route('/breaststroke')
         }
 
     });
+//Hämta frisimssidan
 router.route('/crawl')
     .get(function (req, res) {
         if (req.session.user) {
@@ -353,11 +341,11 @@ router.route('/crawl')
                 if (error) {
                     console.log(error);
                 }
+                //Hitta beskrivningen till de passen som finns i frisim
                 Description.find({}, function (err, descriptions) {
                     for (let i = 0; i < descriptions.length; i++) {
                         for (let j = 0; j < data.length; j++) {
                             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
                                 data[j].description = descriptions[i];
                             }
                         }
@@ -369,6 +357,7 @@ router.route('/crawl')
             res.render('error/403');
         }
     });
+//Hämta blandat-sidan
 router.route('/mixed')
     .get(function (req, res) {
         if (req.session.user) {
@@ -376,11 +365,11 @@ router.route('/mixed')
                 if (error) {
                     console.log(error);
                 }
+                //Hitta beskrivningen till de passen som finns i blandat
                 Description.find({}, function (err, descriptions) {
                     for (let i = 0; i < descriptions.length; i++) {
                         for (let j = 0; j < data.length; j++) {
                             if ("pass_" + descriptions[i].passID + ".pdf" === data[j].path) {
-                                // console.log("hej!: " + descriptions[i] + " : " + data[j].description);
                                 data[j].description = descriptions[i];
                             }
                         }
@@ -391,8 +380,8 @@ router.route('/mixed')
         } else {
             res.render('error/403');
         }
-
     });
+//Hämta tekniksidan
 router.route('/teknik')
     .get(function (req, res) {
         if (req.session.user) {
@@ -424,6 +413,7 @@ router.route('/document')
             res.render('error/403');
         }
     });
+//Hämta kunskapsstegesidan
 router.route('/kunskapsstege')
     .get(function (req, res) {
         if (req.session.user) {
@@ -445,6 +435,7 @@ router.route('/kunskapsstege')
         let sparad = upload.PDF(req);
         res.redirect('/kunskapsstege');
     });
+//Hämta utbildningssidan
 router.route('/utbildning')
     .get(function (req, res) {
         if (req.session.user) {
@@ -453,6 +444,7 @@ router.route('/utbildning')
             res.render('error/403');
         }
     });
+//Hämta dokumentsidan
 router.route('/dokument')
     .get(function (req, res) {
         if (req.session.user) {
@@ -477,6 +469,7 @@ router.route('/dokument')
         let sparad = upload.PDF(req);
         res.redirect('/dokument');
     });
+//Hämta protokoll
 router.route('/map_protokoll')
     .get(function (req, res) {
         if (req.session.user) {
@@ -485,6 +478,7 @@ router.route('/map_protokoll')
             res.render('error/403');
         }
     });
+//Hämta protokoll - styrelse
 router.route('/board_protokoll')
     .get(function (req, res) {
         if (req.session.user) {
@@ -508,6 +502,7 @@ router.route('/board_protokoll')
         let sparad = upload.PDF(req);
         res.redirect('/board_protokoll');
     });
+//Hämta protokoll - tränare
 router.route('/protokoll')
     .get(function (req, res) {
         if (req.session.user) {
@@ -532,6 +527,7 @@ router.route('/protokoll')
 
         res.redirect('/protokoll');
     });
+//Hämta tabort-sidan
 router.route('/delete/:id')
     .get(function (req, res) {
         if (req.session.user) {
@@ -540,6 +536,7 @@ router.route('/delete/:id')
             res.redirect('/403');
         }
     })
+    //Hitta rätt pass för att ta bort
     .post(function (req, res) {
         if (req.session.user) {
             FilePdf.findOneAndRemove({_id: req.params.id}, function (error) {
@@ -557,7 +554,7 @@ router.route('/delete/:id')
         }
     });
 
-//Get the logout page
+//Hämta logga ut-sidan
 router.route('/logout')
     .get(function (req, res) {
         res.locals.user = undefined;
