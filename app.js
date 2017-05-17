@@ -49,9 +49,23 @@ app.use(function (req, res, next) {
     next();
 });
 
- app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
- app.use('/', require('./routes/home'));
+app.use('/', require('./routes/home'));
+
+//404 hantering
+app.use(function (req, res, next) {
+    res.status(404);
+    res.render('error/404');
+    next();
+});
+
+//500 hantering
+app.use(function (err, req, res, next) {
+    console.log(err.stack);
+    res.status(500).render('error/500');
+    next();
+});
 
 app.listen(port, function () {
     console.log('heey it works on port:' + port);
