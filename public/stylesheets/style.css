@@ -401,13 +401,13 @@ td{
 }
 @media screen and (max-width: 480px) {
     div {width: auto; margin: 0px; padding: 0px;}
-    /*div a{width:auto; border: 3px outset#900;}*/
-    /*div ul{margin: 0px; padding: 0px;}*/
-    /*div li{width: auto; margin: 0px; padding: 0px;}*/
-    /*table{box-shadow: none; width: 100%;}*/
-    /*th{display: block;}*/
-    /*td{display: block;}*/
-    /*tr{border-bottom: 2px solid #999999;}*/
+
+@media screen and (max-width: 370px){
+    /*.tillbaka{float: right; height: 50%;}*/
+    /*.my_profile{ float: right; height: 50%;}*/
+    /*.homeicon{ float: right; height: 50%;}*/
+    #welcomeuser{display: none;}
+}
 }
 @media screen and (max-width: 280px) {
     #PassImg {float: none;}
