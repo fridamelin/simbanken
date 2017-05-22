@@ -311,7 +311,7 @@ td{
     margin-top: 510px ;
 }
 .PassImg{
-    width: 300px;
+    width: 100%;
     height: 100px;
     margin-left: calc(50% - 150px);
 }
@@ -387,4 +387,27 @@ td{
 }
 #noDelete:hover{
     background-color: #85bffc;
+}
+
+@media screen and (max-width: 1300px){
+    #picture{height: 90%; float: right;}
+}
+@media screen and (max-width: 1050px) {
+    #start {float: none; width: 100%}
+    #wrapper {float: none; width: 100%}
+
+
+}
+@media screen and (max-width: 480px) {
+    div {width: auto; margin: 0px; padding: 0px;}
+    div a{width:auto; border: 3px outset#900;}
+    div ul{margin: 0px; padding: 0px;}
+    div li{width: auto; margin: 0px; padding: 0px;}
+    table{box-shadow: none; width: 100%;}
+    th{display: block;}
+    td{display: block;}
+    tr{border-bottom: 2px solid #999999;}
+}
+@media screen and (max-width: 280px) {
+    #PassImg {float: none;}
 }
