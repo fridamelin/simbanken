@@ -6,6 +6,7 @@ module.exports = function () {
     mongoose.Promise = require('bluebird');
     const connectLink = 'mongodb://frida:frida@ds145370.mlab.com:45370/fridasdatabas';
 
+
     let db = mongoose.connect(connectLink);
 
     db.connection.on('connected', function () {

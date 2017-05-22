@@ -148,6 +148,7 @@ router.route('/my_profile')
 //Hämta skapa-pass sidan
 router.route('/create')
     .get(function (req, res) {
+
         if (req.session.user) {
             res.render('home/create');
         } else {
@@ -212,7 +213,7 @@ router.route('/create')
                     .then(function () {
                         console.log("saved in database!");
                     })
-                    .catch(function (err) {
+                    .catch(function (err, req) {
                         console.log('catch' + err);
                         req.session.flash = {
                             type: 'fail',
