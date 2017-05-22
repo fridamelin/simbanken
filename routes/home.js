@@ -183,12 +183,10 @@ router.route('/create')
                 let newActivity = new Activity({
                     exercise: req.body.exercise[i],
                     explanation: req.body.description[i],
-                    //description: req.body.beskrivning,
                     distance: req.body.distance[i],
                     rest: req.body.rest[i],
                     help: req.body.help[i],
                     total: req.body.total[i],
-                    //stroke: stroke,
                     passID: passID,
                     username: req.body.username
                 });
@@ -205,10 +203,6 @@ router.route('/create')
                 html += "</tr>";
 
 
-                // req.session.flash = {
-                //     type: 'success',
-                //     message: 'Du laddade precis upp ett pass!'
-                // };
                 newActivity.save()
                     .then(function () {
                         console.log("saved in database!");
@@ -250,7 +244,6 @@ router.route('/create')
                         owner: req.session.user.username,
                         type: '/' + stroke + '/',
                         description: req.body.beskrivning,
-                        //stroke: stroke
                     });
                     pdf.save(function (err) {
                         if (err) return console.log(err);
@@ -278,6 +271,7 @@ router.route('/butterfly')
                             }
                         }
                     }
+
                     res.render('home/butterfly', {pdf: data});
                 });
             });

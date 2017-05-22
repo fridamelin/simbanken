@@ -4,8 +4,8 @@ let PdfSchema = new mongoose.Schema ({
     path: {type: String},
     owner: {type: String},
     type: {type: String},
-    //stroke: {type: String, required: true},
-    description: {type: String, required: true},
+   // created_at: {type: Date, default: Date.now()},
+    description: {type: String},
 });
 
 let PDF =  mongoose.model('Pdf', PdfSchema);

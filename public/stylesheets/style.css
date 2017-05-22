@@ -407,15 +407,12 @@ td{
     #welcomeuser {margin-top: 5px;}
     #newExercise{margin-top: 5px;}
     #upper {display: none;}
-    .divDoc{margin-left: 20px; position: relative}
-
-
-@media screen and (max-width: 370px){
-    /*.tillbaka{float: right; height: 50%;}*/
-    /*.my_profile{ float: right; height: 50%;}*/
-    /*.homeicon{ float: right; height: 50%;}*/
+    .divDoc{margin-left: 30px; position: relative}
 
 }
+
+@media screen and (max-width: 400px){
+    #upload{position:fixed;}
 }
 @media screen and (max-width: 280px) {
     #PassImg {float: none;}
