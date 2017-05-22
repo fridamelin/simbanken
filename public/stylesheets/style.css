@@ -390,23 +390,31 @@ td{
 }
 
 @media screen and (max-width: 1300px){
-    #picture{height: 90%; float: right;}
+    #picture{height: 90%;}
 }
 @media screen and (max-width: 1050px) {
     #start {float: none; width: 100%}
     #wrapper {float: none; width: 100%}
     .maps {width: 140px; height: 950px; margin: auto; }
     #myTable {overflow-x:auto;}
+    #upload{position: fixed; margin-left: calc(50% - 165px);}
+
 
 }
 @media screen and (max-width: 480px) {
     div {width: auto; margin: 0px; padding: 0px;}
+    #welcomeuser p{display: none;}
+    #welcomeuser {margin-top: 5px;}
+    #newExercise{margin-top: 5px;}
+    #upper {display: none;}
+    .divDoc{margin-left: 20px; position: relative}
+
 
 @media screen and (max-width: 370px){
     /*.tillbaka{float: right; height: 50%;}*/
     /*.my_profile{ float: right; height: 50%;}*/
     /*.homeicon{ float: right; height: 50%;}*/
-    #welcomeuser{display: none;}
+
 }
 }
 @media screen and (max-width: 280px) {

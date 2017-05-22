@@ -25,8 +25,8 @@
 
             <img src="/tillbaka.png" alt="tillbaka" class="tillbaka" onclick="history.go(-1);">
             <div id="welcomeuser">
-                <p>Inloggad som: </p>
-                   <p> {{user.username}}</p>
+                <p>Inloggad som: {{user.username}}</p>
+
                 <form action="/logout" method="post">
                     <input type="submit" value="Logga ut" id="LogoutBtn">
                 </form>
