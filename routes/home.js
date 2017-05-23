@@ -133,7 +133,7 @@ router.route('/my_profile')
                     } else if (data[i].type === "/breaststroke/") {
                         data[i].image = "/breaststroke.jpg";
                     } else if (data[i].type === "/crawl/") {
-                        data[i].image = "/crawl.jpg";
+                        data[i].image = "/Simhallen_crawl.jpg";
                     } else if (data[i].type === "/mixed/") {
                         data[i].image = "/mixednew.jpg";
                     }
@@ -496,6 +496,22 @@ router.route('/board_protokoll')
 
         let sparad = upload.PDF(req);
         res.redirect('/board_protokoll');
+
+        //Testar!!!
+        // if (req.session.user === 'frida@nybrosimklubb.se' || 'henrik@nybrosimklubb.se') {
+        //     FilePdf.findOneAndRemove({_id: req.params.id}, function (error) {
+        //         if (error) {
+        //             throw new Error('Något gick snett..');
+        //         }
+        //         req.session.flash = {
+        //             type: 'success',
+        //             message: 'Dokumentet togs bort!'
+        //         };
+        //         res.redirect('/board_protokoll');
+        //     });
+        // } else {
+        //     res.redirect('/403');
+        // }
     });
 //Hämta protokoll - tränare
 router.route('/protokoll')

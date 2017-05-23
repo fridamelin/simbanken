@@ -407,7 +407,8 @@ td{
     #welcomeuser {margin-top: 5px;}
     #newExercise{margin-top: 5px;}
     #upper {display: none;}
-    .divDoc{margin-left: 30px; position: relative}
+    .divDoc{margin-left: 40px; position: relative}
+    .pdfIcon{height: 70px;}
 
 }
 
