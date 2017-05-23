@@ -5,14 +5,14 @@
         <a href="/utbildningar/{{this.path}}" target="_blank"><img src="/test.png" class="pdfIcon"></a>
         <div class="infoDoc">
             <p>{{this.path}}</p>
-            <a href="/delete/{{this.id}}">Ta bort</a>
+            <a href="/deleteDoc/{{this.id}}">Ta bort</a>
         </div>
     </div>
 {{/each}}
 
 <div id="upload">
-    <form action="/utbildning" method="post">
-        <input type="file" name="pdf" id="chooseBtn">
-        <input type="submit" value="Ladda upp">
+    <form action="/utbildning" method="post" enctype="multipart/form-data">
+        <input type="file" name="pdf" id="chooseBtn" accept="file_extension"/>
+        <input type="submit" value="Ladda upp"/>
     </form>
 </div>

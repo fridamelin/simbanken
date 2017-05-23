@@ -17,6 +17,10 @@ router.route('/createMembership')
     .get(function (req, res) {
         res.render('home/createMembership');
     });
+router.route('/errorDoc')
+    .get(function (req, res) {
+        res.render('home/errorDoc');
+    });
 
 //Kommer det till en ny tränare eller nya styrelsemedlemmar kan man ta bort kommentarerna och använda koden då den fungerar som den ska.
 
@@ -496,22 +500,6 @@ router.route('/board_protokoll')
 
         let sparad = upload.PDF(req);
         res.redirect('/board_protokoll');
-
-        //Testar!!!
-        // if (req.session.user === 'frida@nybrosimklubb.se' || 'henrik@nybrosimklubb.se') {
-        //     FilePdf.findOneAndRemove({_id: req.params.id}, function (error) {
-        //         if (error) {
-        //             throw new Error('Något gick snett..');
-        //         }
-        //         req.session.flash = {
-        //             type: 'success',
-        //             message: 'Dokumentet togs bort!'
-        //         };
-        //         res.redirect('/board_protokoll');
-        //     });
-        // } else {
-        //     res.redirect('/403');
-        // }
     });
 //Hämta protokoll - tränare
 router.route('/protokoll')
@@ -564,6 +552,35 @@ router.route('/delete/:id')
             res.redirect('/403');
         }
     });
+
+//Hämta tabort-sidan för dokumenten
+router.route('/deleteDoc/:id')
+    .get(function (req, res) {
+        if (req.session.user) {
+            res.render('home/deleteDoc', {id: req.params.id});
+        } else {
+            res.redirect('/403');
+        }
+    })
+    //Hitta rätt dokument för att ta bort
+    .post(function (req, res) {
+        if (req.session.user ) { //=== 'henrik@nybrosimklubb.se' || req.session.user === 'frida@nybrosimklubb.se'
+            console.log(req.session.user);
+            FilePdf.findOneAndRemove({_id: req.params.id}, function (error) {
+                if (error) {
+                    throw new Error('Något gick snett..');
+                }
+                req.session.flash = {
+                    type: 'success',
+                    message: 'Dokumentet togs bort!'
+                };
+                res.redirect('/document');
+            });
+        } else {
+            res.redirect('/errorDoc');
+        }
+    });
+
 
 //Hämta logga ut-sidan
 router.route('/logout')
