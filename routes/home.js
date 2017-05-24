@@ -564,7 +564,7 @@ router.route('/deleteDoc/:id')
     })
     //Hitta rätt dokument för att ta bort
     .post(function (req, res) {
-        if (req.session.user ) { //=== 'henrik@nybrosimklubb.se' || req.session.user === 'frida@nybrosimklubb.se'
+        if (req.session.user.username === 'henrik@nybrosimklubb.se' || req.session.user.username === 'frida@nybrosimklubb.se') {
             console.log(req.session.user);
             FilePdf.findOneAndRemove({_id: req.params.id}, function (error) {
                 if (error) {
