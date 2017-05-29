@@ -2,57 +2,88 @@
 ::-webkit-scrollbar {
     width: 0px;
 }
-.fail{
-    text-align: center;
-    font-style: italic;
-    font-size: x-large;
-    margin-top: 5px;
-}
-.success{
+
+/*Flashmeddelanden, fail & success */
+.fail {
     text-align: center;
     font-style: italic;
     font-size: x-large;
     margin-top: 5px;
 }
 
-body{
+.success {
+    text-align: center;
+    font-style: italic;
+    font-size: x-large;
+    margin-top: 5px;
+}
+
+/*SLUT på flashmedddelanden*/
+
+/*Design på standardsaker*/
+body {
     background-image: url("../water-1018808.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
-.hidden {display:none;}
-#upper{
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+}
+
+a {
+    color: #020202;
+}
+
+footer {
+    width: auto;
+}
+
+footer p {
+    text-align: center;
+}
+
+/*SLUT på design standardsaker*/
+
+.hidden {
+    display: none;
+}
+
+#upper {
     height: 100px;
 }
-#meny{
+
+#meny {
     width: 100%;
     background-color: #85bffc;
     height: 60px;
     margin-top: 20px;
     border: solid 1px white;
 }
-h1{
-   text-align: center;
-}
-h2{
-    text-align: center;
-}
-h3{
-    text-align: center;
-}
-h4{
-    text-align: center;
-}
-#kontakt{
+
+#kontakt {
     text-align: center;
 }
 
-#welcomeuser p{
+#welcomeuser p {
     margin-top: 0px;
     margin-left: 5px;
     font-weight: bold;
 }
-#wrapper{
+
+#wrapper {
     background-color: #1991d0;
     margin: auto;
     width: 1000px;
@@ -61,14 +92,17 @@ h4{
     overflow: auto;
     opacity: 0.9;
 }
-#start{
+
+/*Startsida*/
+#start {
     margin: auto;
     background-color: #1991d0;
     width: 500px;
     height: 500px;
     overflow: scroll;
 }
-#LoginBtn{
+
+#LoginBtn {
     width: 170px;
     height: 70px;
     margin-left: calc(50% - 85px);
@@ -77,15 +111,18 @@ h4{
     font-weight: bold;
     cursor: pointer;
 }
-#LogoutBtn{
+
+#LogoutBtn {
     margin-left: 5px;
     cursor: pointer;
 }
-#LoginBtn:hover{
+
+#LoginBtn:hover {
     background-color: #85bffc;
 }
-#SignupBtn{
-    width:170px;
+
+#SignupBtn {
+    width: 170px;
     height: 70px;
     margin-left: calc(50% - 85px);
     margin-top: 20px;
@@ -94,89 +131,184 @@ h4{
     cursor: pointer;
 }
 
-#SignupBtn:hover{
+#SignupBtn:hover {
     background-color: #85bffc;
 }
-.formCreate{
+
+.homeicon {
+    height: 50px;
+    width: 50px;
+    float: right;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+
+.tillbaka {
+    height: 50px;
+    width: 50px;
+    float: right;
+    padding-right: 5px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.my_profile {
+    height: 50px;
+    width: 50px;
+    float: right;
+    padding-right: 5px;
+    padding-top: 5px;
+}
+
+.startP {
+    text-align: center;
+}
+
+#createNew {
+    width: 180px;
+    height: 70px;
+    margin-left: calc(50% - 95px);
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#document {
+    width: 180px;
+    height: 70px;
+    margin-left: calc(50% - 95px);
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#Btn {
+    width: 180px;
+    height: 70px;
+    margin-left: calc(50% - 95px);
+    margin-top: 60px;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#createNew:hover {
+    background-color: #85bffc;
+}
+
+#document:hover {
+    background-color: #85bffc;
+}
+
+#Btn:hover {
+    background-color: #85bffc;
+}
+
+/*SLUT på startsida*/
+
+/*Skapa konto*/
+.formCreate {
     margin-top: 100px;
 }
-.formCreate p{
+
+.formCreate p {
     text-align: center;
     font-size: large;
 }
-#create{
+
+#create {
     margin: auto;
     width: 170px;
 }
-#createUser{
+
+#createUser {
     height: 20px;
 }
-#createUser:focus{
+
+#createUser:focus {
     background-color: #85bffc;
 }
-#createPassword{
+
+#createPassword {
     height: 20px;
 }
-#createPassword:focus{
+
+#createPassword:focus {
     background-color: #85bffc;
 }
-#CreateBtn{
+
+#CreateBtn {
     margin-top: 15px;
     cursor: pointer;
 }
-#login{
+
+/*SLUT på skapa konto*/
+
+/*Logga in*/
+#login {
     margin: auto;
     width: 170px;
 }
-#usernameBox{
+
+#usernameBox {
     height: 20px;
 }
-#passwordBox{
-    height:20px;
+
+#passwordBox {
+    height: 20px;
 }
-#usernameBox:focus{
+
+#usernameBox:focus {
     background-color: #85bffc;
 }
-#passwordBox:focus{
+
+#passwordBox:focus {
     background-color: #85bffc;
 }
-.formLogin{
+
+.formLogin {
     margin-top: 100px;
 }
-.formLogin p{
+
+.formLogin p {
     text-align: center;
     font-size: large;
 }
-#SubmitBtn{
+
+#SubmitBtn {
     margin-top: 15px;
     cursor: pointer;
     margin-bottom: 20px;
 }
-footer{
-    width: auto;
-}
-footer p{
-    text-align: center;
-}
-.maps{
+
+/*SLUT på logga in*/
+
+/*Mapparna med dokument & simpass*/
+
+.maps {
     background-color: #1991d0;
     margin: 200px auto;
     width: 950px;
     height: 100px;
     text-align: center;
 }
+
 .maps-document {
-    width:650px;
+    width: 650px;
 }
+
 .maps-protokoll {
     width: 300px;
 }
-.image{
+
+.image {
     position: relative;
     width: 140px;
-    float:left;
-    height:140px;
-    margin-left:1.5%;
+    float: left;
+    height: 140px;
+    margin-left: 1.5%;
 }
 
 .image p {
@@ -185,101 +317,53 @@ footer p{
     width: 100%;
     font-weight: bold;
 }
-a{
-    color: #020202;
-}
-.foldericon{
+
+.foldericon {
     height: 120px;
     width: 120px;
     margin: 5px;
 }
-.homeicon{
-    height: 50px;
-    width: 50px;
-    float: right;
-    padding-right: 5px;
-    padding-top: 5px;
-}
-.tillbaka{
-    height: 50px;
-    width: 50px;
-    float: right;
-    padding-right: 5px;
-    padding-top: 5px;
-    cursor: pointer;
 
+.foldericon2 {
+    width: 120px;
+    height: 120px;
 }
 
-.startP{
-    text-align: center;
-}
-#createNew{
-    width:180px;
-    height: 70px;
-    margin-left: calc(50% - 95px);
-    font-size: large;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
-}
-#document{
-    width:180px;
-    height: 70px;
-    margin-left: calc(50% - 95px);
-    font-size: large;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
-}
-#Btn{
-    width: 180px;
-    height: 70px;
-    margin-left: calc(50% - 95px);
-    margin-top: 60px;
-    font-size: large;
-    font-weight: bold;
-    cursor: pointer;
-}
-#createNew:hover{
-    background-color: #85bffc;
-}
-#document:hover{
-    background-color: #85bffc;
-}
-#Btn:hover{
-    background-color: #85bffc;
-}
-table{
+/*SLUT på mapparna med dokument & simpass*/
+
+/*Tabell där man skapar pass*/
+table {
     border-collapse: collapse;
     width: 100%;
     margin-top: 10px;
 }
+
 .tableClass {
-    display:none;
+    display: none;
 }
-th{
+
+th {
     border: 1px solid #1991d0;
     background-color: #85bffc;
 }
-td{
+
+td {
     border: 1px solid #85bffc;
 }
-.inputtable{
+
+.inputtable {
     width: 100%;
     height: 20px;
     background-color: #85bffc;
 }
-.inputtableSmall{
+
+.inputtableSmall {
     width: 100%;
     height: 20px;
     background-color: #85bffc;
 }
-#total{
-    width: 300px;
-    float: right;
-    text-align: right;
-}
-#save{
+
+#save {
     width: 100px;
     height: 40px;
     margin-left: calc(50% - 50px);
@@ -287,17 +371,23 @@ td{
     font-size: large;
     cursor: pointer;
 }
-#save:hover{
+
+#save:hover {
     background-color: #85bffc;
 }
-.imageDoc{
+
+/*SLUT på tabell där man skapar pass*/
+
+/*Passens layout (bilderna)*/
+.imageDoc {
     position: relative;
     width: 120px;
-    float:left;
-    height:120px;
-    margin-left:10%;
+    float: left;
+    height: 120px;
+    margin-left: 10%;
     margin-top: 12%;
 }
+
 .imageDoc p {
     position: absolute;
     top: 45px;
@@ -305,17 +395,14 @@ td{
     width: 100%;
     display: inline;
 }
-#upload{
-    position: fixed;
-    margin-left: 350px;
-    margin-top: 510px ;
-}
-.PassImg{
+
+.PassImg {
     width: 100%;
     height: 100px;
     margin-left: calc(50% - 150px);
 }
-.polaroid{
+
+.polaroid {
     width: 300px;
     background-color: #ececec;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -323,30 +410,13 @@ td{
     margin-left: calc(50% - 150px);
     margin-top: 20px;
 }
-.container{
+
+.container {
     text-align: center;
     padding: 2px;
 }
-.divDoc{
-    display: inline;
-    float: left;
-    width: 33.333%;
-    text-align: center;
-    font-weight: bold;
-}
 
-.pdfIcon{
-    height: 100px;
-    margin-top: 5px;
-}
-.foldericon2{
-    width: 120px;
-    height: 120px;
-}
-.p_error{
-    text-align: center;
-}
-#beskrivning_pass{
+#beskrivning_pass {
     min-width: 300px;
     min-height: 70px;
     max-width: 300px;
@@ -354,17 +424,37 @@ td{
     margin-left: calc(50% - 150px);
     margin-top: 10px;
 }
-.infoDoc{
+
+.infoDoc {
     text-align: center;
 }
-.my_profile{
-    height: 50px;
-    width: 50px;
-    float: right;
-    padding-right: 5px;
-    padding-top: 5px;
+
+/*SLUT på passens layout (bilderna)*/
+
+/*PDF filerna*/
+.divDoc {
+    display: inline;
+    float: left;
+    width: 33.333%;
+    text-align: center;
+    font-weight: bold;
 }
-#deletePass{
+
+.pdfIcon {
+    height: 100px;
+    margin-top: 5px;
+}
+
+#upload {
+    position: fixed;
+    margin-left: 350px;
+    margin-top: 510px;
+}
+
+/*SLUT på PDF filerna*/
+
+/*Ta bort pass / dokument*/
+#deletePass {
     width: 180px;
     height: 70px;
     margin-left: calc(50% - 95px);
@@ -373,7 +463,8 @@ td{
     font-weight: bold;
     cursor: pointer;
 }
-#noDelete{
+
+#noDelete {
     width: 180px;
     height: 70px;
     margin-left: calc(50% - 95px);
@@ -382,39 +473,60 @@ td{
     font-weight: bold;
     cursor: pointer;
 }
-#deletePass:hover{
-    background-color: #85bffc;
-}
-#noDelete:hover{
+
+#deletePass:hover {
     background-color: #85bffc;
 }
 
-@media screen and (max-width: 1300px){
-    #picture{height: 90%;}
+#noDelete:hover {
+    background-color: #85bffc;
 }
+
+/*SLUT på ta bort pass / dokument*/
+
+.p_error {
+    text-align: center;
+}
+
+/*MOBILANPASSNING*/
+@media screen and (max-width: 1300px) {
+    #picture {  height: 90%;  }
+}
+
 @media screen and (max-width: 1050px) {
-    #start {float: none; width: 100%}
-    #wrapper {float: none; width: 100%}
-    .maps {width: 140px; height: 950px; margin: auto; }
-    #myTable {overflow-x:auto;}
-    #upload{position: fixed; margin-left: calc(50% - 165px);}
+    #start { float: none;  width: 100%  }
 
+    #wrapper {  float: none;  width: 100%  }
 
+    .maps { width: 140px;  height: 950px;  margin: auto;  }
+
+    #myTable {  overflow-x: auto;  }
+
+    #upload {  position: fixed;  margin-left: calc(50% - 165px);  }
 }
+
 @media screen and (max-width: 480px) {
-    div {width: auto; margin: 0px; padding: 0px;}
-    #welcomeuser p{display: none;}
-    #welcomeuser {margin-top: 5px;}
-    #newExercise{margin-top: 5px;}
-    #upper {display: none;}
-    .divDoc{margin-left: 40px; position: relative}
-    .pdfIcon{height: 70px;}
+    div {  width: auto;  margin: 0px;  padding: 0px;  }
 
+    #welcomeuser p { display: none;  }
+
+    #welcomeuser { margin-top: 5px;  }
+
+    #newExercise {  margin-top: 5px;  }
+
+    #upper {  display: none;  }
+
+    .divDoc {  margin-left: 40px;  position: relative  }
+
+    .pdfIcon {  height: 70px;  }
 }
 
-@media screen and (max-width: 400px){
-    #upload{position:fixed;}
+@media screen and (max-width: 400px) {
+    #upload {  position: fixed;  }
 }
+
 @media screen and (max-width: 280px) {
-    #PassImg {float: none;}
+    #PassImg { float: none; }
 }
+
+/* SLUT PÅ MOBILANPASSNING*/
