@@ -239,7 +239,7 @@ router.route('/butterfly')
                             }
                         }
                     }
-
+                    data.sort(function(b, a) {return (a.path > b.path) ? 1 : ((b.path > a.path) ? -1 : 0);} );
                     res.render('home/butterfly', {pdf: data});
                 });
             });
@@ -264,6 +264,7 @@ router.route('/backstroke')
                             }
                         }
                     }
+                    data.sort(function(b, a) {return (a.path > b.path) ? 1 : ((b.path > a.path) ? -1 : 0);} );
                     res.render('home/backstroke', {pdf: data});
                 });
             });
@@ -288,6 +289,7 @@ router.route('/breaststroke')
                             }
                         }
                     }
+                    data.sort(function(b, a) {return (a.path > b.path) ? 1 : ((b.path > a.path) ? -1 : 0);} );
                     res.render('home/breaststroke', {pdf: data});
                 });
             });
@@ -313,6 +315,7 @@ router.route('/crawl')
                             }
                         }
                     }
+                    data.sort(function(b, a) {return (a.path > b.path) ? 1 : ((b.path > a.path) ? -1 : 0);} );
                     res.render('home/crawl', {pdf: data});
                 });
             });
@@ -337,6 +340,7 @@ router.route('/mixed')
                             }
                         }
                     }
+                    data.sort(function(b, a) {return (a.path > b.path) ? 1 : ((b.path > a.path) ? -1 : 0);} );
                     res.render('home/mixed', {pdf: data});
                 });
             });
