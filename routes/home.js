@@ -22,43 +22,7 @@ router.route('/errorDoc')
         res.render('home/errorDoc');
     });
 
-//Kommer det till en ny tränare eller nya styrelsemedlemmar kan man ta bort kommentarerna och använda koden då den fungerar som den ska.
 
-//     .get(function (req, res) {
-//         res.render('home/createMembership');
-//     })
-//     .post(function (req, res) {
-//         let newCreate = new User({
-//             username: req.body.username,
-//             password: req.body.password
-//         });
-//
-//         User.findOne({username: req.body.username}).then(function (data) {
-//             if (data) {
-//                 req.session.flash = {
-//                     type: 'fail',
-//                     message: 'Användarnamnet är upptaget, vänligen välj ett annat!'
-//                 };
-//                 res.redirect('/createMembership');
-//             }
-//             else {
-//                 newCreate.save()
-//                     .then(function () {
-//                         res.redirect('/');
-//                     }).catch(function (data) {
-//                     if (data) {
-//                         req.session.flash = {
-//                             type: 'fail',
-//                             message: 'Användarnamnet måste vara minst 4 tecken,' +
-//                             'och lösenordet 6 tecken!'
-//                         };
-//
-//                         res.redirect('/createMembership');
-//                     }
-//                 });
-//             }
-//         });
-//     });
 router.route('/403')
     .get(function (req, res) {
         res.render('error/403');
